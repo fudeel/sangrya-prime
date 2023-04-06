@@ -1,0 +1,19 @@
+.provider-card {
+  align-items: center;
+  transition: all 0.2s;
+  width: 300px;
+  margin-right: 12px;
+  margin-bottom: 20px;
+
+
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  }
+}

@@ -1,1 +1,7 @@
 <p>private works!</p>
+<div class="providers">
+  <ng-container *ngFor="let p of petsitters">
+    <app-provider-card [provider]="p"></app-provider-card>
+  </ng-container>
+</div>
+
