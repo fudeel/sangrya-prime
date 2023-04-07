@@ -14,6 +14,10 @@ export class PrivateComponent implements OnInit{
 
   constructor(private readonly auth: AuthService, private readonly providersService: ProvidersService) {
     auth.user$.subscribe(user => console.log(user));
+    auth.idTokenClaims$.subscribe(claims => {
+      console.log(claims?.__raw)
+      localStorage.setItem('id_token', JSON.stringify(claims?.__raw));
+    });
   }
 
   ngOnInit(): void {
