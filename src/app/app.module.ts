@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
 import { AuthModule } from '@auth0/auth0-angular';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthInterceptor} from "./shared/interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -14,6 +16,7 @@ import { AuthModule } from '@auth0/auth0-angular';
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
+    HttpClientModule,
     AuthModule.forRoot({
       domain: 'sangrya-development.eu.auth0.com',
       clientId: 'uVaDkPLi8kG9TzwDsguceJQx1wBO0VKn',
@@ -22,7 +25,7 @@ import { AuthModule } from '@auth0/auth0-angular';
       }
     }),
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
