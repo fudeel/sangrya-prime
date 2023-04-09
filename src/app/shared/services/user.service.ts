@@ -47,9 +47,20 @@ export class UserService {
     return this.http.get(`${environment.customBackendUrl}/user/get`).pipe(
       catchError(error => {
         console.log('error: ', error);
-        // Here you can handle the error and retrieve the HTTP status code
         const statusCode = error.status;
-        return throwError(error);
+        if (statusCode === 404) {
+          return this.createUserOnDb().pipe(
+            switchMap(result => {
+              if (result?.user) {
+                this.updateUser(result.user);
+              }
+              return throwError(error);
+            })
+          );
+        } else {
+          // Throw the error if it's not a 409 status code
+          return throwError(error);
+        }
       })
     );
   }

@@ -1,9 +1,12 @@
 <div class="provider-card">
-  <p-card header="{{provider.fullname}}" subheader="{{provider.petsitting[0] | titlecase}}">
+  <p-card header="{{provider?.fullname}}">
+    <div *ngFor="let ps of provider.petsitting">
+      <p-chip label="{{ps}}"></p-chip>
+    </div>
     <p>
-      {{provider.description}}
+      {{provider?.description}}
     </p>
-    <div class="footer">
+    <div>
       <p-button label="Select" icon="pi pi-chevron-right" iconPos="right"></p-button>
       <p-button *ngIf="inCancellable" label="Cancel" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
     </div>
