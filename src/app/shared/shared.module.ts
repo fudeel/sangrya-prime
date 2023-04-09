@@ -12,6 +12,8 @@ import { AnimalComponent } from './components/stepper/stepper-views/animal/anima
 import { BookingComponent } from './components/stepper/stepper-views/booking/booking.component';
 import { PaymentComponent } from './components/stepper/stepper-views/payment/payment.component';
 import { ConfirmComponent } from './components/stepper/stepper-views/confirm/confirm.component';
+import {RadioButtonModule} from "primeng/radiobutton";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -30,11 +32,19 @@ import { ConfirmComponent } from './components/stepper/stepper-views/confirm/con
     CardModule,
     ButtonModule,
     ChipModule,
-    StepsModule
+    StepsModule,
+    RadioButtonModule,
+    FormsModule
   ],
   exports: [
     ProviderCardComponent,
-    StepperComponent
+    StepperComponent,
+    CardModule,
+    ButtonModule,
+    ChipModule,
+    StepsModule,
+    RadioButtonModule,
+    FormsModule
   ]
 })
 export class SharedModule { }

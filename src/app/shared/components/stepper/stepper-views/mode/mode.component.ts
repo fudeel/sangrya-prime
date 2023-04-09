@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class ModeComponent {
 
+  modeChoice: 'in-home' | 'in-pet-sitter' = 'in-home';
+
 }

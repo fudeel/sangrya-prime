@@ -1,2 +1,5 @@
 <p>engage works!</p>
 <app-stepper [items]="items"></app-stepper>
+
+<p-button label="Back" (onClick)="onBack()"></p-button>
+<p-button label="{{currentStep !== 'confirmation' ? 'Next' : 'Confirm'}}" [disabled]="handleDisable()" (onClick)="onNext()"></p-button>

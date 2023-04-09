@@ -1,1 +1,12 @@
-<p>mode works!</p>
+
+<div class="flex flex-wrap gap-3">
+  <div class="flex align-items-center">
+    <p-radioButton name="in-home" value="in-home" [(ngModel)]="modeChoice" inputId="in-home"></p-radioButton>
+    <label for="in-home" class="ml-2">The Petsitter has to come in my home</label>
+  </div>
+
+  <div class="flex align-items-center">
+    <p-radioButton name="in-pet-sitter" value="in-pet-sitter" [(ngModel)]="modeChoice" inputId="in-pet-sitter"></p-radioButton>
+    <label for="in-pet-sitter" class="ml-2">I will bring my pet to the Petsitter</label>
+  </div>
+</div>

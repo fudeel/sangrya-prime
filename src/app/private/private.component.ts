@@ -50,7 +50,7 @@ export class PrivateComponent implements OnInit{
   }
 
   onProviderSelection($event: string) {
-    this.router.navigate(['private/engage/' + $event]);
+    this.router.navigate(['private/engage/' + $event + '/mode']);
   }
 
 }
