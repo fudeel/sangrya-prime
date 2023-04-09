@@ -4,7 +4,6 @@ import {
   HttpHandler,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import {AuthService} from "@auth0/auth0-angular";
 
 @Injectable()

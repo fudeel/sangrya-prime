@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {filter, map} from "rxjs";
+import {StepperChoices, StepperService} from "../../shared/components/stepper/stepper.service";
 
 @Component({
   selector: 'app-engage',
@@ -38,7 +39,11 @@ export class EngageComponent implements OnInit {
 
   currentStep: string = 'mode';
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+
+  modeSelection: 'in-home' | 'in-pet-sitter' | null = null;
+  choices: StepperChoices = {};
+
+  constructor(private route: ActivatedRoute, private router: Router, private readonly stepperService: StepperService) {
     router.events
       .pipe(
         filter((event: any) => event instanceof NavigationEnd),
@@ -49,6 +54,10 @@ export class EngageComponent implements OnInit {
 
         this.currentStep = lastUrlSegment.toString();
       });
+
+    this.stepperService.stepperChoices$.subscribe((data) => {
+      this.choices.mode = data.mode;
+    });
   }
 
   ngOnInit(): void {
@@ -63,7 +72,7 @@ export class EngageComponent implements OnInit {
   }
 
   handleDisable() {
-    if (this.currentStep === 'mode') {
+    if (this.currentStep === 'mode' && this.choices.mode) {
       return false;
     } else {
       return true;
