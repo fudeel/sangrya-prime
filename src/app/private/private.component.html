@@ -1,5 +1,5 @@
-<p>private works!</p>
-<div class="providers">
+<p>private works! {{username}}</p>
+<div class="providers" *ngIf="petsitters.length > 0">
   <ng-container *ngFor="let p of petsitters">
     <app-provider-card [provider]="p"></app-provider-card>
   </ng-container>
