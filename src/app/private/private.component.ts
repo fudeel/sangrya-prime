@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "@auth0/auth0-angular";
 import {ProvidersService} from "../shared/services/providers.service";
 import {UserService} from "../shared/services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-private',
@@ -14,7 +15,9 @@ export class PrivateComponent implements OnInit{
 
   username = 'Not logged in';
 
-  constructor(private readonly auth: AuthService, private readonly providersService: ProvidersService, private readonly userService: UserService) {
+  constructor(private readonly auth: AuthService,
+              private readonly providersService: ProvidersService,
+              private readonly userService: UserService, private readonly router: Router) {
     this.auth.user$.subscribe(user => {
       if (user) {
         this.username = user['username'];
@@ -44,6 +47,10 @@ export class PrivateComponent implements OnInit{
         this.petsitters = res.providers;
       }
     });
+  }
+
+  onProviderSelection($event: string) {
+    this.router.navigate(['private/engage/' + $event]);
   }
 
 }

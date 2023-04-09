@@ -7,7 +7,7 @@
       {{provider?.description}}
     </p>
     <div>
-      <p-button label="Select" icon="pi pi-chevron-right" iconPos="right"></p-button>
+      <p-button label="Select" icon="pi pi-chevron-right" iconPos="right" (onClick)="onProviderSelection()"></p-button>
       <p-button *ngIf="inCancellable" label="Cancel" icon="pi pi-times" styleClass="p-button-secondary"></p-button>
     </div>
   </p-card>
