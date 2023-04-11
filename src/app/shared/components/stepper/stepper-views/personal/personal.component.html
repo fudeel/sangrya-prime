@@ -5,3 +5,5 @@
 <input pInputText type="text" class="p-inputtext-lg" placeholder="City" (ngModelChange)="onPersonalFormChanges($event, 'cityAddress')" [(ngModel)]="cityAddress" />
 <input pInputText type="text" class="p-inputtext-lg" placeholder="Street" (ngModelChange)="onPersonalFormChanges($event, 'streetAddress')" [(ngModel)]="streetAddress" />
 <input pInputText type="text" class="p-inputtext-lg" placeholder="Zip" (ngModelChange)="onPersonalFormChanges($event, 'zipCode')" [(ngModel)]="zipCode" />
+<p-button label="Back" (onClick)="onBack()"></p-button>
+<p-button label="Next" [disabled]="firstname.length === 0 || lastname.length === 0 || phoneNumber.length === 0" (onClick)="onNext()"></p-button>

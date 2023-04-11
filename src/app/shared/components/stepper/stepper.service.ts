@@ -6,6 +6,7 @@ import {BehaviorSubject} from "rxjs";
 })
 export class StepperService {
 
+  private selectedPetSitter = new BehaviorSubject<any>(null);
   private stepperChoices = new BehaviorSubject<StepperChoices>({
     mode: null,
     personal: null,
@@ -15,15 +16,28 @@ export class StepperService {
     confirmation: null
   });
   stepperChoices$ = this.stepperChoices.asObservable();
+  selectedPetSitter$ = this.selectedPetSitter.asObservable();
 
   constructor() { }
+
+  updateSelectedPetSitter(petSitter: PetSitterSelection) {
+    console.log('selected petsitter: ', petSitter);
+    this.selectedPetSitter.next(petSitter);
+    localStorage.setItem('selected-pet-sitter', JSON.stringify(petSitter));
+  }
 
   updateStepperChoices(stepperChoices: StepperChoices) {
     console.log(stepperChoices)
     this.stepperChoices.next(stepperChoices);
+    localStorage.setItem('stepper-choices', JSON.stringify(stepperChoices));
   }
 }
 
+export interface PetSitterSelection {
+  _id: string;
+  userId: string;
+  petsitting: any[];
+}
 
 export interface StepperChoices {
   mode?: 'in-home' | 'in-pet-sitter' | null | undefined;

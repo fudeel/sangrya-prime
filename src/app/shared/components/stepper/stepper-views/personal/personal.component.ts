@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {StepperChoices, StepperService} from "../../stepper.service";
+import {PetSitterSelection, StepperChoices, StepperService} from "../../stepper.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-personal',
@@ -18,11 +19,23 @@ export class PersonalComponent {
   streetAddress: string | undefined = '';
   zipCode: string | undefined = '';
   choices: StepperChoices | undefined;
+  petsitterId: string | null | undefined = null;
+  constructor(private readonly stepperService: StepperService, private readonly router: Router) {
+    if (localStorage.getItem('stepper-choices')) {
+      this.choices = JSON.parse(<string>localStorage.getItem('stepper-choices'));
+    } else {
+      this.stepperService.stepperChoices$.subscribe((data: StepperChoices) => {
+        this.choices = data;
+      });
+    }
 
-  constructor(private readonly stepperService: StepperService) {
-    this.stepperService.stepperChoices$.subscribe((data: StepperChoices) => {
-      this.choices = data;
-    });
+    if (localStorage.getItem('selected-pet-sitter')) {
+      this.petsitterId = JSON.parse(<string>localStorage.getItem('selected-pet-sitter'))['_id'];
+    } else {
+      this.stepperService.selectedPetSitter$.subscribe((data: PetSitterSelection) => {
+        this.petsitterId = data._id;
+      });
+    }
   }
 
   onPersonalFormChanges($event: string, field: 'firstname' | 'lastname' | 'phoneNumber' | 'countryAddress' | 'cityAddress' | 'streetAddress' | 'zipCode') {
@@ -44,4 +57,11 @@ export class PersonalComponent {
     })
   }
 
+  onBack() {
+    this.router.navigate([`private/engage/${this.petsitterId}/mode`]);
+  }
+
+  onNext() {
+    this.router.navigate([`private/engage/${this.petsitterId}/personal`]);
+  }
 }

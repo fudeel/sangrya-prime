@@ -3,6 +3,7 @@ import {AuthService} from "@auth0/auth0-angular";
 import {ProvidersService} from "../shared/services/providers.service";
 import {UserService} from "../shared/services/user.service";
 import {Router} from "@angular/router";
+import {PetSitterSelection, StepperService} from "../shared/components/stepper/stepper.service";
 
 @Component({
   selector: 'app-private',
@@ -17,6 +18,7 @@ export class PrivateComponent implements OnInit{
 
   constructor(private readonly auth: AuthService,
               private readonly providersService: ProvidersService,
+              private readonly stepperService: StepperService,
               private readonly userService: UserService, private readonly router: Router) {
     this.auth.user$.subscribe(user => {
       if (user) {
@@ -49,8 +51,9 @@ export class PrivateComponent implements OnInit{
     });
   }
 
-  onProviderSelection($event: string) {
-    this.router.navigate(['private/engage/' + $event + '/mode']);
+  onProviderSelection($event: PetSitterSelection) {
+    this.stepperService.updateSelectedPetSitter($event);
+    this.router.navigate(['private/engage/' + $event._id + '/mode']);
   }
 
 }

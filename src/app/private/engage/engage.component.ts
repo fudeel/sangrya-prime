@@ -62,34 +62,4 @@ export class EngageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  onNext() {
-    this.router.navigate(([ this.currentStep === 'mode' ? 'personal' :
-      this.currentStep === 'personal' ? 'animal' :
-        this.currentStep === 'animal' ? 'booking' :
-          this.currentStep === 'booking' ? 'payment' :
-            this.currentStep === 'payment' ? 'confirmation' : 'mode' ]), { relativeTo: this.route });
-  }
-
-  handleDisable() {
-    if (this.currentStep === 'mode' && this.choices.mode) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  onBack() {
-    this.router.navigate(([ this.currentStep === 'mode' ? '../../../private' :
-      this.currentStep === 'personal' ? 'mode' :
-        this.currentStep === 'animal' ? 'personal' :
-          this.currentStep === 'booking' ? 'animal' :
-            this.currentStep === 'payment' ? 'booking' : 'payment' ]), { relativeTo: this.route });
-
-    if (this.currentStep === 'mode') {
-      this.stepperService.updateStepperChoices({
-        mode: null,
-      });
-    }
-  }
 }

@@ -10,3 +10,5 @@
     <label for="in-pet-sitter" class="ml-2">I will bring my pet to the Petsitter</label>
   </div>
 </div>
+<p-button label="Back" (onClick)="onBack()"></p-button>
+<p-button label="Next" [disabled]="modeChoice == null" (onClick)="onNext()"></p-button>
