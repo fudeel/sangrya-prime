@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { AuthModule } from '@auth0/auth0-angular';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./shared/interceptors/auth.interceptor";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {AuthInterceptor} from "./shared/interceptors/auth.interceptor";
         redirect_uri: window.location.origin
       }
     }),
+    FontAwesomeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

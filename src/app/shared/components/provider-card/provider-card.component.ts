@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-provider-card',
@@ -14,9 +15,19 @@ export class ProviderCardComponent implements OnInit {
 
   @Output() selectProvider: EventEmitter<string> = new EventEmitter<string>();
 
+  petSittingAnimalString: string[] = [];
+
+  userVerified = faCircleCheck;
+
   constructor() { }
 
   ngOnInit(): void {
+
+    this.provider.petsitting.forEach((pet: any) => {
+      this.petSittingAnimalString.push(pet.animal);
+    });
+
+    console.log(this.petSittingAnimalString);
   }
 
   onProviderSelection() {

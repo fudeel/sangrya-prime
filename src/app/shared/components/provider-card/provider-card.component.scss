@@ -19,4 +19,20 @@
 .p-card {
   width: 250px;
   height: 250px;
+
+  .p-card-content {
+    padding-block: 0;
+    position: relative;
+    .icons {
+      position: absolute;
+      bottom: 11rem;
+      left: 5.5rem;
+    }
+    .chips {
+      display: flex;
+      div {
+        margin-right: 2px;
+      }
+    }
+  }
 }

@@ -1,7 +1,12 @@
 <div class="provider-card">
   <p-card header="{{provider?.fullname}}">
-    <div *ngFor="let ps of provider.petsitting">
-      <p-chip label="{{ps}}"></p-chip>
+    <div class="icons">
+      <fa-icon *ngIf="provider.isVerified" [icon]="userVerified"></fa-icon>
+    </div>
+    <div class="chips">
+      <div *ngFor="let ps of petSittingAnimalString">
+        <p-chip label="{{ps}}"></p-chip>
+      </div>
     </div>
     <p>
       {{provider?.description}}
