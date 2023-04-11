@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {StepperService} from "../../stepper.service";
+import {StepperChoices, StepperService} from "../../stepper.service";
 
 @Component({
   selector: 'app-mode',
@@ -11,18 +11,31 @@ export class ModeComponent {
   @Output() modeSelectionChanges: EventEmitter<string> = new EventEmitter<string>();
 
   modeChoice: 'in-home' | 'in-pet-sitter' | null = null;
-
-  constructor(private readonly stepperService: StepperService) { }
+  choices: StepperChoices | undefined;
+  constructor(private readonly stepperService: StepperService) {
+    this.stepperService.stepperChoices$.subscribe((data: StepperChoices) => {
+      this.choices = data;
+    });
+  }
 
 
   onModelSelectionChange($event: 'in-home' | 'in-pet-sitter' | null | undefined) {
     this.stepperService.updateStepperChoices({
       mode: $event,
-      personal: null,
-      animal: null,
-      booking: null,
-      payment: null,
-      confirmation: null
+      personal: {
+        firstname: this.choices?.personal?.firstname,
+        lastname: this.choices?.personal?.lastname,
+        phoneNumber: this.choices?.personal?.phoneNumber,
+        countryAddress: this.choices?.personal?.countryAddress,
+        cityAddress: this.choices?.personal?.cityAddress,
+        streetAddress: this.choices?.personal?.streetAddress,
+        zipCode: this.choices?.personal?.zipCode
+
+      },
+      animal: this.choices?.animal,
+      booking: this.choices?.booking,
+      payment: this.choices?.payment,
+      confirmation: this.choices?.confirmation
     })
   }
 }

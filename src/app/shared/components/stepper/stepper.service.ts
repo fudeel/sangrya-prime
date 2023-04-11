@@ -19,6 +19,7 @@ export class StepperService {
   constructor() { }
 
   updateStepperChoices(stepperChoices: StepperChoices) {
+    console.log(stepperChoices)
     this.stepperChoices.next(stepperChoices);
   }
 }
@@ -27,9 +28,13 @@ export class StepperService {
 export interface StepperChoices {
   mode?: 'in-home' | 'in-pet-sitter' | null | undefined;
   personal?: {
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
+    firstname?: string;
+    lastname?: string;
+    phoneNumber?: string;
+    countryAddress?: string | null;
+    cityAddress?: string | null;
+    streetAddress?: string | null;
+    zipCode?: string | null;
   } | null | undefined;
   animal?: {
     name: string;

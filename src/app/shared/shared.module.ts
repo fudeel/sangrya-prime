@@ -15,6 +15,7 @@ import { ConfirmComponent } from './components/stepper/stepper-views/confirm/con
 import {RadioButtonModule} from "primeng/radiobutton";
 import {FormsModule} from "@angular/forms";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {InputTextModule} from "primeng/inputtext";
 
 
 @NgModule({
@@ -28,16 +29,17 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     PaymentComponent,
     ConfirmComponent
   ],
-    imports: [
-        CommonModule,
-        CardModule,
-        ButtonModule,
-        ChipModule,
-        StepsModule,
-        RadioButtonModule,
-        FormsModule,
-        FontAwesomeModule
-    ],
+  imports: [
+    CommonModule,
+    CardModule,
+    ButtonModule,
+    ChipModule,
+    StepsModule,
+    RadioButtonModule,
+    FormsModule,
+    FontAwesomeModule,
+    InputTextModule
+  ],
   exports: [
     ProviderCardComponent,
     StepperComponent,

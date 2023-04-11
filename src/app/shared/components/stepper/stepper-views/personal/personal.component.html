@@ -1,1 +1,7 @@
-<p>personal works!</p>
+<input pInputText type="text" class="p-inputtext-lg" placeholder="Firstname*" (ngModelChange)="onPersonalFormChanges($event, 'firstname')" [(ngModel)]="firstname" />
+<input pInputText type="text" class="p-inputtext-lg" placeholder="Lastname*" (ngModelChange)="onPersonalFormChanges($event, 'lastname')" [(ngModel)]="lastname" />
+<input pInputText type="text" class="p-inputtext-lg" placeholder="Phone number*" (ngModelChange)="onPersonalFormChanges($event, 'phoneNumber')" [(ngModel)]="phoneNumber" />
+<input pInputText type="text" class="p-inputtext-lg" placeholder="Country" (ngModelChange)="onPersonalFormChanges($event, 'countryAddress')" [(ngModel)]="countryAddress" />
+<input pInputText type="text" class="p-inputtext-lg" placeholder="City" (ngModelChange)="onPersonalFormChanges($event, 'cityAddress')" [(ngModel)]="cityAddress" />
+<input pInputText type="text" class="p-inputtext-lg" placeholder="Street" (ngModelChange)="onPersonalFormChanges($event, 'streetAddress')" [(ngModel)]="streetAddress" />
+<input pInputText type="text" class="p-inputtext-lg" placeholder="Zip" (ngModelChange)="onPersonalFormChanges($event, 'zipCode')" [(ngModel)]="zipCode" />

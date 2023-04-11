@@ -85,5 +85,11 @@ export class EngageComponent implements OnInit {
         this.currentStep === 'animal' ? 'personal' :
           this.currentStep === 'booking' ? 'animal' :
             this.currentStep === 'payment' ? 'booking' : 'payment' ]), { relativeTo: this.route });
+
+    if (this.currentStep === 'mode') {
+      this.stepperService.updateStepperChoices({
+        mode: null,
+      });
+    }
   }
 }
