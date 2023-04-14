@@ -29,6 +29,17 @@ export class AnimalComponent implements OnInit, OnDestroy {
 
   }
 
+  ngOnInit(): void {
+    this.stepperService.engageForm$.pipe(take(1)).subscribe((e) => {
+      this.animals = e.controls?.['animalForm'].value.animals;
+      const animalsArray = this.animalForm.get('animals') as FormArray;
+      animalsArray.clear();
+      this.animals.forEach((a: any) => {
+        animalsArray.push(this.fb.group({ ...a }));
+      });
+    });
+  }
+
   get animalControls() {
     return (this.animalForm.get('animals') as FormArray).controls;
   }
@@ -62,16 +73,5 @@ export class AnimalComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.animalSub?.unsubscribe();
-  }
-
-  ngOnInit(): void {
-    this.stepperService.engageForm$.pipe(take(1)).subscribe((e) => {
-      this.animals = e.controls?.['animalForm'].value.animals;
-      const animalsArray = this.animalForm.get('animals') as FormArray;
-      animalsArray.clear();
-      this.animals.forEach((a: any) => {
-        animalsArray.push(this.fb.group({ ...a }));
-      });
-    });
   }
 }

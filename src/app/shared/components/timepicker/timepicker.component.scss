@@ -1,0 +1,31 @@
+.timepicker {
+  display: inline-block;
+}
+
+.time-input {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  cursor: pointer;
+  text-align: center;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 2px;
+  margin: 1px;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: #eee;
+}

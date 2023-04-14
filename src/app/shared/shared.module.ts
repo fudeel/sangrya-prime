@@ -16,6 +16,8 @@ import {RadioButtonModule} from "primeng/radiobutton";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {InputTextModule} from "primeng/inputtext";
+import {CalendarModule} from "primeng/calendar";
+import { TimepickerComponent } from './components/timepicker/timepicker.component';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import {InputTextModule} from "primeng/inputtext";
     AnimalComponent,
     BookingComponent,
     PaymentComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    TimepickerComponent
   ],
     imports: [
         CommonModule,
@@ -39,7 +42,8 @@ import {InputTextModule} from "primeng/inputtext";
         FormsModule,
         FontAwesomeModule,
         InputTextModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CalendarModule
     ],
   exports: [
     ProviderCardComponent,

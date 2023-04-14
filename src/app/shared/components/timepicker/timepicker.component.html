@@ -1,0 +1,13 @@
+<div class="timepicker">
+  <div class="time-input">
+    <div class="arrows">
+      <button (click)="incrementHours()">&#x25B2;</button>
+      <button (click)="incrementMinutes()">&#x25B2;</button>
+    </div>
+    <input [value]="selectedTime" readonly />
+    <div class="arrows">
+      <button (click)="decrementHours()">&#x25BC;</button>
+      <button (click)="decrementMinutes()">&#x25BC;</button>
+    </div>
+  </div>
+</div>

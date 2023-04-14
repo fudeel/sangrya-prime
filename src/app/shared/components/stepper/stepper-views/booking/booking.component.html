@@ -1,1 +1,6 @@
 <p>booking works!</p>
+
+<div [formGroup]="bookingForm">
+  <p-calendar formControlName="dates" selectionMode="multiple" [showButtonBar]="true" [inline]="true" [minDate]="minDate" [maxDate]="maxDate"  [readonlyInput]="true"></p-calendar>
+  <app-timepicker></app-timepicker>
+</div>
