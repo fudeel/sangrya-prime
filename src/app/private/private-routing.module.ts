@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     component: PrivateComponent,
   }, {
-    path: 'engage/:id',
+    path: 'engage',
     loadChildren: () => import('./engage/engage.module').then(m => m.EngageModule)
   }
 ];

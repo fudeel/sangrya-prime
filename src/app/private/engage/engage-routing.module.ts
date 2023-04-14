@@ -15,7 +15,7 @@ const routes: Routes = [
     path: '',
     component: EngageComponent,
     children: [
-      { path: '', redirectTo: 'personal', pathMatch: 'full' },
+      { path: '', redirectTo: 'mode', pathMatch: 'full' },
       { path: 'mode', component: ModeComponent },
       { path: 'personal', component: PersonalComponent },
       { path: 'animal', component: AnimalComponent },

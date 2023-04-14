@@ -53,7 +53,8 @@ export class PrivateComponent implements OnInit{
 
   onProviderSelection($event: PetSitterSelection) {
     this.stepperService.updateSelectedPetSitter($event);
-    this.router.navigate(['private/engage/' + $event._id + '/mode']);
+    this.router.navigate(['private/engage'], { queryParams: { petsitterid: $event._id, animalOne: $event.petsitting[0].animal, animalTwo: $event.petsitting[1].animal } });
+
   }
 
 }

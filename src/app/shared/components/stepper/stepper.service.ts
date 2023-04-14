@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -7,18 +8,20 @@ import {BehaviorSubject} from "rxjs";
 export class StepperService {
 
   private selectedPetSitter = new BehaviorSubject<any>(null);
-  private stepperChoices = new BehaviorSubject<StepperChoices>({
-    mode: null,
-    personal: null,
-    animal: null,
-    booking: null,
-    payment: null,
-    confirmation: null
-  });
-  stepperChoices$ = this.stepperChoices.asObservable();
   selectedPetSitter$ = this.selectedPetSitter.asObservable();
 
-  constructor() { }
+  engageForm = new BehaviorSubject<FormGroup>(
+    this.fb.group({
+      modeForm: this.fb.group({
+        choice: ['', Validators.required]
+      }),
+      personalInformationForm: this.fb.group({
+
+      }),
+    })
+  );
+
+  constructor(private fb: FormBuilder) { }
 
   updateSelectedPetSitter(petSitter: PetSitterSelection) {
     console.log('selected petsitter: ', petSitter);
@@ -26,10 +29,19 @@ export class StepperService {
     localStorage.setItem('selected-pet-sitter', JSON.stringify(petSitter));
   }
 
-  updateStepperChoices(stepperChoices: StepperChoices) {
-    console.log(stepperChoices)
-    this.stepperChoices.next(stepperChoices);
-    localStorage.setItem('stepper-choices', JSON.stringify(stepperChoices));
+  updateEngageForm(modeFormValue: any, personalInformationFormValue: any) {
+    const currentEngageForm = this.engageForm.getValue();
+
+    if (modeFormValue) {
+      currentEngageForm.get('modeForm')?.setValue(modeFormValue)
+    }
+
+    if (personalInformationFormValue) {
+      currentEngageForm.get('personalInformationForm')?.patchValue(personalInformationFormValue);
+    }
+
+    console.log('currentEngageForm: ', currentEngageForm);
+    this.engageForm.next(currentEngageForm);
   }
 }
 

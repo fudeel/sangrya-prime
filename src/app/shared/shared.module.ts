@@ -13,7 +13,7 @@ import { BookingComponent } from './components/stepper/stepper-views/booking/boo
 import { PaymentComponent } from './components/stepper/stepper-views/payment/payment.component';
 import { ConfirmComponent } from './components/stepper/stepper-views/confirm/confirm.component';
 import {RadioButtonModule} from "primeng/radiobutton";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {InputTextModule} from "primeng/inputtext";
 
@@ -29,17 +29,18 @@ import {InputTextModule} from "primeng/inputtext";
     PaymentComponent,
     ConfirmComponent
   ],
-  imports: [
-    CommonModule,
-    CardModule,
-    ButtonModule,
-    ChipModule,
-    StepsModule,
-    RadioButtonModule,
-    FormsModule,
-    FontAwesomeModule,
-    InputTextModule
-  ],
+    imports: [
+        CommonModule,
+        CardModule,
+        ButtonModule,
+        ChipModule,
+        StepsModule,
+        RadioButtonModule,
+        FormsModule,
+        FontAwesomeModule,
+        InputTextModule,
+        ReactiveFormsModule
+    ],
   exports: [
     ProviderCardComponent,
     StepperComponent,
