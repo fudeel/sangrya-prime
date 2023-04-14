@@ -1,23 +1,23 @@
 <p>animal works!</p>
-<div [formGroup]="animalForm">
-  <div formArrayName="animals">
-    <div *ngFor="let animal of animalControls; let i = index" [formGroupName]="i">
-      <label>
-        Race:
-        <input type="text" formControlName="race">
-      </label>
-
-      <label>
-        Size:
-        <input type="text" formControlName="size">
-      </label>
-
-
-      <button type="button" (click)="removeAnimal(i)">Remove</button>
-    </div>
+<div *ngIf="animals.length > 0">
+  <div *ngFor="let animal of animals; let i = index">
+    {{animal.race}} - {{animal.size}}  <button type="button" (click)="removeAnimal(i)">Remove</button>
   </div>
-
-  <button type="button" (click)="addAnimal()">Add Animal</button>
 </div>
+
+<div *ngIf="showAddAnimal">
+  <label>
+    Race:
+    <input type="text" #animalRace>
+  </label>
+
+  <label>
+    Size:
+    <input type="text" #animalSize>
+  </label>
+  <button type="button" (click)="confirmAddAnimal(animalRace.value, animalSize.value)">Ok</button>
+</div>
+
+<button type="button" (click)="addAnimal()">Add Animal</button>
 <p-button label="Back" (onClick)="onBack()"></p-button>
-<p-button label="Next" [disabled]="animalForm.invalid" (onClick)="onNext()"></p-button>
+<p-button label="Next" [disabled]="this.animals.length === 0" (onClick)="onNext()"></p-button>

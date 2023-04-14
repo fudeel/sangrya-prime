@@ -30,18 +30,17 @@ export class StepperService {
     })
   );
 
+  engageForm$ = this.engageForm.asObservable();
+
   constructor(private fb: FormBuilder) { }
 
   updateSelectedPetSitter(petSitter: PetSitterSelection) {
-    console.log('selected petsitter: ', petSitter);
     this.selectedPetSitter.next(petSitter);
     localStorage.setItem('selected-pet-sitter', JSON.stringify(petSitter));
   }
 
   updateEngageForm(modeFormValue: any, personalInformationFormValue: any, animalFormValue: any) {
     const currentEngageForm = this.engageForm.getValue();
-
-    console.log(currentEngageForm)
     if (modeFormValue) {
       currentEngageForm.get('modeForm')?.setValue(modeFormValue)
     }
@@ -51,12 +50,13 @@ export class StepperService {
     }
 
     if (animalFormValue && Array.isArray(animalFormValue)) {
+      const animalsArray = currentEngageForm.get('animalForm.animals') as FormArray;
+      animalsArray.clear();
       animalFormValue.forEach((a: any) => {
-        (currentEngageForm.get('animalForm.animals') as FormArray).push(this.fb.group({ ...a }));
+        animalsArray.push(this.fb.group({ ...a }));
       });
     }
 
-    console.log('currentEngageForm: ', currentEngageForm);
     this.engageForm.next(currentEngageForm);
   }
 }

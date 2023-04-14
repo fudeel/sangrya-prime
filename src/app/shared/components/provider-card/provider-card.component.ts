@@ -26,8 +26,6 @@ export class ProviderCardComponent implements OnInit {
     this.provider.petsitting.forEach((pet: any) => {
       this.petSittingAnimalString.push(pet.animal);
     });
-
-    console.log(this.petSittingAnimalString);
   }
 
   onProviderSelection() {
