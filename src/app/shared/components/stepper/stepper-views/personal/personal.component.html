@@ -1,9 +1,12 @@
-<input pInputText type="text" class="p-inputtext-lg" placeholder="Firstname*" (ngModelChange)="onPersonalFormChanges($event, 'firstname')" [(ngModel)]="firstname" />
-<input pInputText type="text" class="p-inputtext-lg" placeholder="Lastname*" (ngModelChange)="onPersonalFormChanges($event, 'lastname')" [(ngModel)]="lastname" />
-<input pInputText type="text" class="p-inputtext-lg" placeholder="Phone number*" (ngModelChange)="onPersonalFormChanges($event, 'phoneNumber')" [(ngModel)]="phoneNumber" />
-<input pInputText type="text" class="p-inputtext-lg" placeholder="Country" (ngModelChange)="onPersonalFormChanges($event, 'countryAddress')" [(ngModel)]="countryAddress" />
-<input pInputText type="text" class="p-inputtext-lg" placeholder="City" (ngModelChange)="onPersonalFormChanges($event, 'cityAddress')" [(ngModel)]="cityAddress" />
-<input pInputText type="text" class="p-inputtext-lg" placeholder="Street" (ngModelChange)="onPersonalFormChanges($event, 'streetAddress')" [(ngModel)]="streetAddress" />
-<input pInputText type="text" class="p-inputtext-lg" placeholder="Zip" (ngModelChange)="onPersonalFormChanges($event, 'zipCode')" [(ngModel)]="zipCode" />
+<div [formGroup]="personalInformationForm">
+  <input pInputText type="text" class="p-inputtext-lg" formControlName="firstname" placeholder="Firstname*"/>
+  <input pInputText type="text" class="p-inputtext-lg" formControlName="lastname" placeholder="Lastname*"/>
+  <input pInputText type="text" class="p-inputtext-lg" formControlName="phoneNumber" placeholder="Phone number*"/>
+  <input pInputText type="text" class="p-inputtext-lg" formControlName="countryAddress"  placeholder="Country"/>
+  <input pInputText type="text" class="p-inputtext-lg" formControlName="cityAddress" placeholder="City"/>
+  <input pInputText type="text" class="p-inputtext-lg" formControlName="streetAddress" placeholder="Street"/>
+  <input pInputText type="text" class="p-inputtext-lg" formcontrolName="zipCode" placeholder="Zip"/>
+</div>
+
 <p-button label="Back" (onClick)="onBack()"></p-button>
-<p-button label="Next" [disabled]="firstname.length === 0 || lastname.length === 0 || phoneNumber.length === 0" (onClick)="onNext()"></p-button>
+<p-button label="Next" [disabled]="personalInformationForm.invalid" (onClick)="onNext()"></p-button>

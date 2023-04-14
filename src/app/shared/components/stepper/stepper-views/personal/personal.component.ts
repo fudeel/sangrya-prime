@@ -2,6 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {PetSitterSelection, StepperChoices, StepperService} from "../../stepper.service";
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-personal',
@@ -21,7 +22,19 @@ export class PersonalComponent {
   zipCode: string | undefined = '';
   choices: StepperChoices | undefined;
   petsitterId: string | null | undefined = null;
-  constructor(private readonly stepperService: StepperService, private readonly router: Router, private readonly location: Location) {
+
+
+  personalInformationForm = this.fb.group({
+    firstname: ['', Validators.required],
+    lastname: ['', Validators.required],
+    phoneNumber: ['', Validators.required],
+    countryAddress: [''],
+    cityAddress: [''],
+    streetAddress: [''],
+    zipCode: ['']
+  });
+
+  constructor(private readonly stepperService: StepperService, private readonly router: Router, private readonly location: Location, private fb: FormBuilder) {
   }
 
   onPersonalFormChanges($event: string, field: 'firstname' | 'lastname' | 'phoneNumber' | 'countryAddress' | 'cityAddress' | 'streetAddress' | 'zipCode') {
@@ -32,7 +45,7 @@ export class PersonalComponent {
   }
 
   onNext() {
+    this.stepperService.updateEngageForm(null, this.personalInformationForm.value)
     this.router.navigate([`private/engage/animal`], { queryParamsHandling: 'merge' });
-
   }
 }

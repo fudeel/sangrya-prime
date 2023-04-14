@@ -16,7 +16,13 @@ export class StepperService {
         choice: ['', Validators.required]
       }),
       personalInformationForm: this.fb.group({
-
+        firstname: ['', Validators.required],
+        lastname: ['', Validators.required],
+        phoneNumber: ['', Validators.required],
+        countryAddress: ['', Validators.required],
+        cityAddress: ['', Validators.required],
+        streetAddress: ['', Validators.required],
+        zipCode: ['', Validators.required]
       }),
     })
   );
@@ -37,7 +43,7 @@ export class StepperService {
     }
 
     if (personalInformationFormValue) {
-      currentEngageForm.get('personalInformationForm')?.patchValue(personalInformationFormValue);
+      currentEngageForm.get('personalInformationForm')?.setValue(personalInformationFormValue);
     }
 
     console.log('currentEngageForm: ', currentEngageForm);
