@@ -45,7 +45,7 @@ export class PersonalComponent {
   }
 
   onNext() {
-    this.stepperService.updateEngageForm(null, this.personalInformationForm.value)
+    this.stepperService.updateEngageForm(null, this.personalInformationForm.value, null)
     this.router.navigate([`private/engage/animal`], { queryParamsHandling: 'merge' });
   }
 }

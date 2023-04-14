@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,9 @@ export class StepperService {
         streetAddress: ['', Validators.required],
         zipCode: ['', Validators.required]
       }),
+      animalForm: this.fb.group({
+        animals: this.fb.array([])
+      }),
     })
   );
 
@@ -35,15 +38,22 @@ export class StepperService {
     localStorage.setItem('selected-pet-sitter', JSON.stringify(petSitter));
   }
 
-  updateEngageForm(modeFormValue: any, personalInformationFormValue: any) {
+  updateEngageForm(modeFormValue: any, personalInformationFormValue: any, animalFormValue: any) {
     const currentEngageForm = this.engageForm.getValue();
 
+    console.log(currentEngageForm)
     if (modeFormValue) {
       currentEngageForm.get('modeForm')?.setValue(modeFormValue)
     }
 
     if (personalInformationFormValue) {
       currentEngageForm.get('personalInformationForm')?.setValue(personalInformationFormValue);
+    }
+
+    if (animalFormValue && Array.isArray(animalFormValue)) {
+      animalFormValue.forEach((a: any) => {
+        (currentEngageForm.get('animalForm.animals') as FormArray).push(this.fb.group({ ...a }));
+      });
     }
 
     console.log('currentEngageForm: ', currentEngageForm);
