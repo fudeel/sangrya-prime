@@ -1,6 +1,12 @@
 <p>booking works!</p>
 
-<div [formGroup]="bookingForm">
-  <p-calendar formControlName="dates" selectionMode="multiple" [showButtonBar]="true" [inline]="true" [minDate]="minDate" [maxDate]="maxDate"  [readonlyInput]="true"></p-calendar>
-  <app-timepicker></app-timepicker>
+<div>
+  <div class="calendar" *ngIf="bookingForm" [formGroup]="bookingForm">
+    <p-calendar formControlName="dates" selectionMode="multiple" [inline]="true" [minDate]="minDate" [maxDate]="maxDate"  [readonlyInput]="true"></p-calendar>
+  </div>
+  <div *ngFor="let d of bookingForm?.controls?.['dates']?.value">
+    <p-card></p-card>
+  </div>
 </div>
+<p-button label="Back" (onClick)="onBack()"></p-button>
+<p-button label="{{bookingForm?.controls?.['dates']?.value?.length >= 5 ? 'You can select up to 5 dates per time' : 'Next'}}" [disabled]="bookingForm?.controls?.['dates']?.value?.length >= 5 || bookingForm?.controls?.['dates']?.value?.length === 0 || bookingForm?.controls?.['dates']?.value === null" (onClick)="onNext()"></p-button>
