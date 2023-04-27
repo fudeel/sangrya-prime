@@ -2,10 +2,27 @@
 
 <div>
   <div class="calendar">
-    <p-calendar [(ngModel)]="calendar" (ngModelChange)="onDateSelect($event)" selectionMode="multiple" [inline]="true" [minDate]="minDate" [maxDate]="maxDate"  [readonlyInput]="true"></p-calendar>
+    <p-calendar [(ngModel)]="calendar" [disabled]="calendar.length >= 5" (ngModelChange)="onDateSelect($event)" selectionMode="multiple" [inline]="true" [minDate]="minDate" [maxDate]="maxDate"  [readonlyInput]="true"></p-calendar>
   </div>
   <div *ngFor="let d of bookingForm?.controls?.['dates']?.value">
-    <p-card>
+    <p-card [id]="d">
+      <div class="card-content">
+        <div class="card-content-day">
+          <p>{{d.date | date }}</p>
+        </div>
+        <div class="card-content-times">
+          <!-- create a select with 3 options. The opions are "1 time", "2 times and "3 times" -->
+          <p-dropdown [options]="numberOfTimes" [style]="{'width':'100%'}" placeholder="Select a time" (onChange)="onNumberOfTimesSelection($event, d)"></p-dropdown>
+
+          <p-dropdown [options]="defaultTimeSlots" [disabled]="d.selectedNumberOfTimes === 'thrice'"></p-dropdown>
+          <p-dropdown [options]="defaultTimeSlots" [disabled]="d.selectedNumberOfTimes === 'thrice'" *ngIf="d.selectedNumberOfTimes === 'twice' || d.selectedNumberOfTimes === 'thrice'"></p-dropdown>
+          <p-dropdown [options]="defaultTimeSlots" [disabled]="d.selectedNumberOfTimes === 'thrice'" *ngIf="d.selectedNumberOfTimes === 'thrice'"></p-dropdown>
+
+        </div>
+        <div class="card-content-slot">
+          <p *ngFor="let s of d.timeSlots">{{s.value}}</p>
+        </div>
+      </div>
     </p-card>
   </div>
 </div>

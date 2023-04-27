@@ -1,8 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {StepperService} from "../../stepper.service";
 import {Router} from "@angular/router";
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Subscription} from "rxjs";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Location} from "@angular/common";
 
 @Component({
@@ -22,27 +21,30 @@ export class BookingComponent implements OnInit, OnDestroy {
   bookingForm: FormGroup = new FormGroup({
     dates: new FormControl<Booking[]>([])
   });
+  numberOfTimes: string[] = ['once', 'twice', 'thrice'];
+  defaultTimeSlots: TimeSlot[] = [
+    {label: 'morning'},
+    {label: 'afternoon'},
+    {label: 'evening'}
+  ]
 
 
   constructor(private readonly stepperService: StepperService, private readonly router: Router, private fb: FormBuilder, private readonly location: Location) {
   }
 
   ngOnInit(): void {
-
   }
 
   onDateSelect(event: Date[]) {
-
     // clear bookingForm.dates array before pushing new dates
     this.bookingForm.get('dates')?.setValue([]);
 
     const bookings: Booking[] = [];
-    console.log('Event: ', event);
     event.forEach((date: Date) => {
       const newBooking: Booking = {
         date: date,
-        timesPerDay: 'once',
-        hoursPerTime: 1
+        selectedTimeSlots: [],
+        selectedNumberOfTimes: ''
       };
       bookings.push(newBooking);
     });
@@ -53,11 +55,9 @@ export class BookingComponent implements OnInit, OnDestroy {
     });
 
     // push each element inside bookings into bookingForm.dates array
-
     bookings.forEach((booking: Booking) => {
       this.bookingForm.get('dates')?.value.push(booking);
     });
-
   }
 
   onBack() {
@@ -68,21 +68,54 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.router.navigate([`private/engage/payment`], { queryParamsHandling: 'merge' });
   }
 
-  ngOnDestroy(): void {
+
+
+  onNumberOfTimesSelection($event: any, d: any) {
+
+    const bookings: any[] = [];
+    // insert all bookingForm.dates inside bookings array
+
+    this.bookingForm.get('dates')?.value.forEach((booking: Booking) => {
+      bookings.push(booking);
+    });
+
+    // from bookings array get only the element where the property date equals d
+    const selectedDay = bookings.find((booking: Booking) => {
+      return booking.date === d.date;
+    });
+
+    // update the selectedNumberOfTimes property of the selectedDay object
+    selectedDay.selectedNumberOfTimes = $event.value;
+
+    // update the bookingForm.dates array element by pushing each element in bookings array
+    this.bookingForm.get('dates')?.setValue([]);
+    bookings.forEach((booking: Booking) => {
+      this.bookingForm.get('dates')?.value.push(booking);
+    });
   }
 
-  onDateClick($event: any) {
-    console.log('Date Clicked: ', $event);
+
+  updateNumberOfTimes(event: any, date: Date) {
+
+    // get the selected day, and change its object information based on the $event, that rappresents the number of times selected.
+    //  update the this.calendar array element and the bookingForm.dates array element
+    const selectedDay = this.bookingForm.get('dates')?.value.find((booking: Booking) => {
+      return booking.date === date;
+    });
+    console.log('selected element from form: ', selectedDay);
+
+  }
+
+
+  ngOnDestroy(): void {
   }
 }
 interface Booking {
   date: Date;
-  timesPerDay: 'once' | 'twice' | 'thrice';
-  hoursPerTime: number;
-  timeSlots?: TimeSlot[];
+  selectedTimeSlots?: TimeSlot[];
+  selectedNumberOfTimes: string;
 }
 
 interface TimeSlot {
   label: 'morning' | 'afternoon' | 'evening';
-  value: '7am - 11am' | '12pm - 4pm' | '6pm - 11pm';
 }
