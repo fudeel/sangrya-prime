@@ -79,4 +79,10 @@ interface Booking {
   date: Date;
   timesPerDay: 'once' | 'twice' | 'thrice';
   hoursPerTime: number;
+  timeSlots?: TimeSlot[];
+}
+
+interface TimeSlot {
+  label: 'morning' | 'afternoon' | 'evening';
+  value: '7am - 11am' | '12pm - 4pm' | '6pm - 11pm';
 }
