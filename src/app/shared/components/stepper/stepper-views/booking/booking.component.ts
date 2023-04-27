@@ -47,7 +47,10 @@ export class BookingComponent implements OnInit, OnDestroy {
       bookings.push(newBooking);
     });
 
-    console.log('Bookings: ', bookings);
+    // order dates in bookings array by date property
+    bookings.sort((a: Booking, b: Booking) => {
+      return a.date.getTime() - b.date.getTime();
+    });
 
     // push each element inside bookings into bookingForm.dates array
 
