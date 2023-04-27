@@ -18,6 +18,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {InputTextModule} from "primeng/inputtext";
 import {CalendarModule} from "primeng/calendar";
 import { TimepickerComponent } from './components/timepicker/timepicker.component';
+import {DropdownModule} from "primeng/dropdown";
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { TimepickerComponent } from './components/timepicker/timepicker.componen
         FontAwesomeModule,
         InputTextModule,
         ReactiveFormsModule,
-        CalendarModule
+        CalendarModule,
+        DropdownModule
     ],
   exports: [
     ProviderCardComponent,

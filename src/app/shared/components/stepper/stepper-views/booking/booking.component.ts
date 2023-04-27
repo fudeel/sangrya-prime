@@ -12,27 +12,49 @@ import {Location} from "@angular/common";
 })
 export class BookingComponent implements OnInit, OnDestroy {
 
-  rangeDates: Date[] = [];
-
-  bookingForm: FormGroup | undefined;
-
-  datesSubscription: Subscription | undefined;
-
   minDate: Date = new Date();
   today = new Date();
   maxDate: Date = new Date(this.today.setDate(this.today.getDate() + 45));
-
-  times = ['once', 'twice', 'three-times', 'four-times'];
   hoursPerTime = ['1', '2', '3', '4', '5', '6', '7', '8'];
+
+  calendar: Date[] = [];
+
+  bookingForm: FormGroup = new FormGroup({
+    dates: new FormControl<Booking[]>([])
+  });
 
 
   constructor(private readonly stepperService: StepperService, private readonly router: Router, private fb: FormBuilder, private readonly location: Location) {
   }
 
   ngOnInit(): void {
-    this.bookingForm = new FormGroup({
-      dates: new FormControl<Date | null>(null)
+
+  }
+
+  onDateSelect(event: Date[]) {
+
+    // clear bookingForm.dates array before pushing new dates
+    this.bookingForm.get('dates')?.setValue([]);
+
+    const bookings: Booking[] = [];
+    console.log('Event: ', event);
+    event.forEach((date: Date) => {
+      const newBooking: Booking = {
+        date: date,
+        timesPerDay: 'once',
+        hoursPerTime: 1
+      };
+      bookings.push(newBooking);
     });
+
+    console.log('Bookings: ', bookings);
+
+    // push each element inside bookings into bookingForm.dates array
+
+    bookings.forEach((booking: Booking) => {
+      this.bookingForm.get('dates')?.value.push(booking);
+    });
+
   }
 
   onBack() {
@@ -46,4 +68,12 @@ export class BookingComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
   }
 
+  onDateClick($event: any) {
+    console.log('Date Clicked: ', $event);
+  }
+}
+interface Booking {
+  date: Date;
+  timesPerDay: 'once' | 'twice' | 'thrice';
+  hoursPerTime: number;
 }

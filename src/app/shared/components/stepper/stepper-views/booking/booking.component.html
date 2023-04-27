@@ -1,11 +1,12 @@
 <p>booking works!</p>
 
 <div>
-  <div class="calendar" *ngIf="bookingForm" [formGroup]="bookingForm">
-    <p-calendar formControlName="dates" selectionMode="multiple" [inline]="true" [minDate]="minDate" [maxDate]="maxDate"  [readonlyInput]="true"></p-calendar>
+  <div class="calendar">
+    <p-calendar [(ngModel)]="calendar" (ngModelChange)="onDateSelect($event)" selectionMode="multiple" [inline]="true" [minDate]="minDate" [maxDate]="maxDate"  [readonlyInput]="true"></p-calendar>
   </div>
   <div *ngFor="let d of bookingForm?.controls?.['dates']?.value">
-    <p-card></p-card>
+    <p-card>
+    </p-card>
   </div>
 </div>
 <p-button label="Back" (onClick)="onBack()"></p-button>
