@@ -15,7 +15,7 @@ export class ProviderCardComponent implements OnInit {
 
   @Output() selectProvider: EventEmitter<string> = new EventEmitter<string>();
 
-  petSittingAnimalString: string[] = [];
+  sellingItems: string[] = [];
 
   userVerified = faCircleCheck;
 
@@ -23,8 +23,8 @@ export class ProviderCardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.provider.petsitting.forEach((pet: any) => {
-      this.petSittingAnimalString.push(pet.animal);
+    this.provider.sellingItems.forEach((item: any) => {
+      this.sellingItems.push(item.category);
     });
   }
 

@@ -19,6 +19,7 @@ import {InputTextModule} from "primeng/inputtext";
 import {CalendarModule} from "primeng/calendar";
 import { TimepickerComponent } from './components/timepicker/timepicker.component';
 import {DropdownModule} from "primeng/dropdown";
+import { ItemCardComponent } from './components/item-card/item-card.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {DropdownModule} from "primeng/dropdown";
     BookingComponent,
     PaymentComponent,
     ConfirmComponent,
-    TimepickerComponent
+    TimepickerComponent,
+    ItemCardComponent
   ],
     imports: [
         CommonModule,
