@@ -22,11 +22,9 @@ export class BookingComponent implements OnInit, OnDestroy {
     dates: new FormControl<Booking[]>([])
   });
   numberOfTimes: string[] = ['once', 'twice', 'thrice'];
-  defaultTimeSlots: TimeSlot[] = [
-    {label: 'morning'},
-    {label: 'afternoon'},
-    {label: 'evening'}
-  ]
+  firstTimeSlot: string = "";
+  secondTimeSlot: string = "";
+  thirdTimeSlot: string = "";
 
 
   constructor(private readonly stepperService: StepperService, private readonly router: Router, private fb: FormBuilder, private readonly location: Location) {
@@ -43,7 +41,7 @@ export class BookingComponent implements OnInit, OnDestroy {
     event.forEach((date: Date) => {
       const newBooking: Booking = {
         date: date,
-        selectedTimeSlots: [],
+        selectedTimeSlots: [null, null, null],
         selectedNumberOfTimes: ''
       };
       bookings.push(newBooking);
@@ -71,51 +69,73 @@ export class BookingComponent implements OnInit, OnDestroy {
 
 
   onNumberOfTimesSelection($event: any, d: any) {
-
     const bookings: any[] = [];
-    // insert all bookingForm.dates inside bookings array
-
     this.bookingForm.get('dates')?.value.forEach((booking: Booking) => {
       bookings.push(booking);
     });
-
-    // from bookings array get only the element where the property date equals d
     const selectedDay = bookings.find((booking: Booking) => {
       return booking.date === d.date;
     });
 
-    // update the selectedNumberOfTimes property of the selectedDay object
     selectedDay.selectedNumberOfTimes = $event.value;
-
-    // update the bookingForm.dates array element by pushing each element in bookings array
     this.bookingForm.get('dates')?.setValue([]);
     bookings.forEach((booking: Booking) => {
       this.bookingForm.get('dates')?.value.push(booking);
     });
-  }
 
-
-  updateNumberOfTimes(event: any, date: Date) {
-
-    // get the selected day, and change its object information based on the $event, that rappresents the number of times selected.
-    //  update the this.calendar array element and the bookingForm.dates array element
-    const selectedDay = this.bookingForm.get('dates')?.value.find((booking: Booking) => {
-      return booking.date === date;
-    });
-    console.log('selected element from form: ', selectedDay);
-
+    if ($event.value === 'once') {
+      this.firstTimeSlot = '';
+      this.secondTimeSlot = '';
+      this.thirdTimeSlot = '';
+    } if ($event.value === 'twice') {
+      this.firstTimeSlot = '';
+      this.secondTimeSlot = '';
+      this.thirdTimeSlot = '';
+    } if ($event.value === 'thrice') {
+      this.firstTimeSlot = '';
+      this.secondTimeSlot = '';
+      this.thirdTimeSlot = '';
+    }
   }
 
 
   ngOnDestroy(): void {
   }
+
+  generateTimeSlot(selected: string, d: any) {
+    const timeSlots = ['morning', 'afternoon', 'evening'];
+
+    if (d.selectedTimeSlots.includes(selected)) {
+      return timeSlots.filter(slot => slot !== selected);
+    } else {
+      return timeSlots;
+    }
+  }
+
+  onSelectedTimeSlotChange($event: any, d: any, i: number) {
+    console.table({
+      $event,
+      d,
+      i
+    })
+    const bookings: any[] = [];
+    this.bookingForm.get('dates')?.value.forEach((booking: Booking) => {
+      bookings.push(booking);
+    });
+    const selectedDay = bookings.find((booking: Booking) => {
+      return booking.date === d.date;
+    });
+
+    selectedDay.selectedTimeSlots[i] = $event;
+
+    this.bookingForm.get('dates')?.setValue([]);
+    bookings.forEach((booking: Booking) => {
+      this.bookingForm.get('dates')?.value.push(booking);
+    });
+  }
 }
 interface Booking {
   date: Date;
-  selectedTimeSlots?: TimeSlot[];
+  selectedTimeSlots?: (string | null)[];
   selectedNumberOfTimes: string;
-}
-
-interface TimeSlot {
-  label: 'morning' | 'afternoon' | 'evening';
 }

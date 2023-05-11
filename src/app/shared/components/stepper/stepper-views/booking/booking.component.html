@@ -14,9 +14,10 @@
           <!-- create a select with 3 options. The opions are "1 time", "2 times and "3 times" -->
           <p-dropdown [options]="numberOfTimes" [style]="{'width':'100%'}" placeholder="Select a time" (onChange)="onNumberOfTimesSelection($event, d)"></p-dropdown>
 
-          <p-dropdown [options]="defaultTimeSlots" [disabled]="d.selectedNumberOfTimes === 'thrice'"></p-dropdown>
-          <p-dropdown [options]="defaultTimeSlots" [disabled]="d.selectedNumberOfTimes === 'thrice'" *ngIf="d.selectedNumberOfTimes === 'twice' || d.selectedNumberOfTimes === 'thrice'"></p-dropdown>
-          <p-dropdown [options]="defaultTimeSlots" [disabled]="d.selectedNumberOfTimes === 'thrice'" *ngIf="d.selectedNumberOfTimes === 'thrice'"></p-dropdown>
+          <p-dropdown [options]="generateTimeSlot(firstTimeSlot, d)" [(ngModel)]="secondTimeSlot" (onChange)="onSelectedTimeSlotChange($event.value, d ,1)" [disabled]="d.selectedNumberOfTimes === 'thrice'" *ngIf="d.selectedNumberOfTimes === 'twice' || d.selectedNumberOfTimes === 'thrice'"></p-dropdown>
+          <p-dropdown [options]="generateTimeSlot(secondTimeSlot, d)" [(ngModel)]="firstTimeSlot" (onChange)="onSelectedTimeSlotChange($event.value, d, 0)" [disabled]="d.selectedNumberOfTimes === 'thrice'"></p-dropdown>
+          <p-dropdown [options]="['Evening']" [(ngModel)]="thirdTimeSlot" [disabled]="d.selectedNumberOfTimes === 'thrice'" *ngIf="d.selectedNumberOfTimes === 'thrice'"></p-dropdown>
+
 
         </div>
         <div class="card-content-slot">
