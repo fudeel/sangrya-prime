@@ -9,6 +9,10 @@ const routes: Routes = [
   }, {
     path: 'engage',
     loadChildren: () => import('./engage/engage.module').then(m => m.EngageModule)
+  },
+  {
+    path: 'store',
+    loadChildren: () => import('./store/store.module').then(m => m.StoreModule)
   }
 ];
 

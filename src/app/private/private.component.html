@@ -1,6 +1,6 @@
 <p>private works! {{username}}</p>
-<div class="providers" *ngIf="petsitters.length > 0">
-  <ng-container *ngFor="let p of petsitters">
+<div class="providers" *ngIf="providers.length > 0">
+  <ng-container *ngFor="let p of providers">
     <app-provider-card (selectProvider)="onProviderSelection(p)" [provider]="p"></app-provider-card>
   </ng-container>
 </div>

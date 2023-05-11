@@ -12,7 +12,7 @@ import {PetSitterSelection, StepperService} from "../shared/components/stepper/s
 })
 export class PrivateComponent implements OnInit{
 
-  petsitters: any[] = []
+  providers: any[] = []
 
   username = 'Not logged in';
 
@@ -46,14 +46,14 @@ export class PrivateComponent implements OnInit{
   getProviders() {
     this.providersService.getProviders().subscribe(res => {
       if (res?.providers) {
-        this.petsitters = res.providers;
+        this.providers = res.providers;
       }
     });
   }
 
   onProviderSelection($event: PetSitterSelection) {
     this.stepperService.updateSelectedPetSitter($event);
-    this.router.navigate(['private/engage'], { queryParams: { petsitterid: $event._id, animalOne: $event.petsitting[0].animal, animalTwo: $event.petsitting[1].animal } });
+    this.router.navigate(['private/store'], { queryParams: { providerId: $event._id } });
 
   }
 
