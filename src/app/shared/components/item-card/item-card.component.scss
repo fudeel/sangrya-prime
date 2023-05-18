@@ -1,0 +1,15 @@
+.p-card{
+  &.store-item {
+    align-items: center;
+    height: auto;
+    width: fit-content;
+    &:hover {
+      background: #f8f8f8;
+    }
+  }
+}
+
+
+:host ::ng-deep .p-carousel-items-content {
+  width: 200px;
+}

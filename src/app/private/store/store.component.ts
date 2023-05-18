@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StoreService} from "../../shared/services/store.service";
 
 @Component({
@@ -6,11 +6,17 @@ import {StoreService} from "../../shared/services/store.service";
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.scss']
 })
-export class StoreComponent {
+export class StoreComponent implements OnInit {
+
+  sellingItems = [];
 
   constructor(private readonly storeService: StoreService) {
     storeService.getStoreInformation().subscribe(res => {
-      console.log('res: ', res);
+      this.sellingItems = res.user.sellingItems;
     })
+  }
+
+  ngOnInit(): void {
+
   }
 }

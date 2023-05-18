@@ -34,11 +34,6 @@ export class StepperService {
 
   constructor(private fb: FormBuilder) { }
 
-  updateSelectedPetSitter(petSitter: PetSitterSelection) {
-    this.selectedPetSitter.next(petSitter);
-    localStorage.setItem('selected-pet-sitter', JSON.stringify(petSitter));
-  }
-
   updateEngageForm(modeFormValue: any, personalInformationFormValue: any, animalFormValue: any) {
     const currentEngageForm = this.engageForm.getValue();
     if (modeFormValue) {

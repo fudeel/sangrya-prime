@@ -20,6 +20,7 @@ import {CalendarModule} from "primeng/calendar";
 import { TimepickerComponent } from './components/timepicker/timepicker.component';
 import {DropdownModule} from "primeng/dropdown";
 import { ItemCardComponent } from './components/item-card/item-card.component';
+import {CarouselModule} from "primeng/carousel";
 
 
 @NgModule({
@@ -47,17 +48,19 @@ import { ItemCardComponent } from './components/item-card/item-card.component';
         InputTextModule,
         ReactiveFormsModule,
         CalendarModule,
-        DropdownModule
+        DropdownModule,
+        CarouselModule
     ],
-  exports: [
-    ProviderCardComponent,
-    StepperComponent,
-    CardModule,
-    ButtonModule,
-    ChipModule,
-    StepsModule,
-    RadioButtonModule,
-    FormsModule
-  ]
+    exports: [
+        ProviderCardComponent,
+        StepperComponent,
+        CardModule,
+        ButtonModule,
+        ChipModule,
+        StepsModule,
+        RadioButtonModule,
+        FormsModule,
+        ItemCardComponent
+    ]
 })
 export class SharedModule { }

@@ -1,1 +1,14 @@
-<p>item-card works!</p>
+<div class="p-card store-item mb-4 py-2 px-1 flex flex-wrap flex-column justify-content-between">
+  <div class="card-container">
+    <div class="images">
+      <p-carousel [value]="item.pics" [circular]="true" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+        <ng-template let-item pTemplate="item">
+          <img src="{{ item }}" [alt]="item"/>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+  <div class="buttons align-items-center">
+    <p-button class="" label="Submit"></p-button>
+  </div>
+</div>

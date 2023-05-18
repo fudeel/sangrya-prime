@@ -52,7 +52,6 @@ export class PrivateComponent implements OnInit{
   }
 
   onProviderSelection($event: PetSitterSelection) {
-    this.stepperService.updateSelectedPetSitter($event);
     this.router.navigate(['private/store'], { queryParams: { providerId: $event._id } });
 
   }
