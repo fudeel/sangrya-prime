@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { faCartShopping, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-item-card',
@@ -9,6 +10,8 @@ import { faCartShopping, faTrash } from '@fortawesome/free-solid-svg-icons';
 export class ItemCardComponent implements OnInit {
   @Input() item: any;
 
+  @Output() selectItem: EventEmitter<string> = new EventEmitter<string>();
+
   responsiveOptions: any[];
 
   isInCart: boolean = false;
@@ -16,7 +19,7 @@ export class ItemCardComponent implements OnInit {
   cart = faCartShopping;
   trash = faTrash;
 
-  constructor() {
+  constructor(private readonly cartService: CartService) {
     this.responsiveOptions = [
       {
         breakpoint: '1199px',
@@ -40,4 +43,7 @@ export class ItemCardComponent implements OnInit {
     console.log('item: ', this.item);
   }
 
+  addRemoveFromCart(_id: string) {
+    this.selectItem.emit(_id);
+  }
 }

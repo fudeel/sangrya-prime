@@ -1,4 +1,4 @@
 <p>store works!</p>
 <div class="flex flex-wrap justify-content-center">
-  <app-item-card [item]="s" *ngFor="let s of sellingItems" class="px-2"></app-item-card>
+  <app-item-card [item]="s" *ngFor="let s of sellingItems" class="px-2" (selectItem)="addRemoveFromCart($event)"></app-item-card>
 </div>

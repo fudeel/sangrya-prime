@@ -5,17 +5,24 @@ import {BehaviorSubject} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class ProvidersService {
+export class CartService {
 
   private cartSubject = new BehaviorSubject<any>(null);
   cart$ = this.cartSubject.asObservable();
 
   constructor() { }
 
-  updateCart(cart: any[]) {
-    if (cart) {
-      this.cartSubject.next(cart);
-      localStorage.setItem('cart', JSON.stringify(cart));
+  updateCart(_id: string) {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const index = cart.findIndex((item: any) => item._id === _id);
+    if (index > -1) {
+      cart.splice(index, 1);
     }
+    else {
+      cart.push({_id});
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    this.cartSubject.next(cart);
+
   }
 }
