@@ -23,6 +23,10 @@ export class CartService {
     }
     localStorage.setItem('cart', JSON.stringify(cart));
     this.cartSubject.next(cart);
+  }
+
+  getCart() {
+    return JSON.parse(localStorage.getItem('cart') || '[]');
 
   }
 }

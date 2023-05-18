@@ -14,11 +14,7 @@ export class StoreComponent implements OnInit {
   constructor(private readonly storeService: StoreService, private readonly cartService: CartService) {
     storeService.getStoreInformation().subscribe(res => {
       this.sellingItems = res.user.sellingItems;
-    })
-
-    cartService.cart$.subscribe( c => {
-      console.log('cart: ', c);
-    })
+    });
   }
 
   ngOnInit(): void {

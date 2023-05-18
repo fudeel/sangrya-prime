@@ -1,1 +1,8 @@
 <router-outlet></router-outlet>
+<div class="floating-button" *ngIf="cart && cart.length > 0">
+  <p-button label="Buy" styleClass="p-button-raised p-button-lg p-button-help" [badge]="cart ? cart.length.toString() : ''">
+    <div class="icons">
+      <fa-icon [icon]="faCart"></fa-icon>
+    </div>
+  </p-button>
+</div>

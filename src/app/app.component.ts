@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {PrimeNGConfig} from "primeng/api";
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import {CartService} from "./shared/services/cart.service";
+
 
 @Component({
   selector: 'app-root',
@@ -9,8 +12,14 @@ import {PrimeNGConfig} from "primeng/api";
 export class AppComponent implements OnInit{
 
   title = 'sangrya-prime';
+  faCart = faCartShopping;
+  cart = [];
 
-  constructor(private primengConfig: PrimeNGConfig) {
+  constructor(private primengConfig: PrimeNGConfig, private readonly cartService: CartService) {
+    cartService.cart$.subscribe( c => {
+      console.log('cart: ', c);
+      this.cart = c;
+    })
   }
 
   ngOnInit(): void {
@@ -20,6 +29,7 @@ export class AppComponent implements OnInit{
       menu: 1000,     // overlay menus
       tooltip: 1100   // tooltip
     };
+    this.cart = this.cartService.getCart();
   }
 
 }

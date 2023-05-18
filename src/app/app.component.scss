@@ -1,0 +1,15 @@
+.floating-button {
+  /* this button is fixed to the bottom right corner of the screen */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  /* this button has a transition */
+  transition: all 0.3s ease-in-out;
+
+  .icons {
+    position: relative;
+    right: 1rem;
+  }
+
+}

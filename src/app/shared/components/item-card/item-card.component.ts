@@ -19,7 +19,7 @@ export class ItemCardComponent implements OnInit {
   cart = faCartShopping;
   trash = faTrash;
 
-  constructor(private readonly cartService: CartService) {
+  constructor() {
     this.responsiveOptions = [
       {
         breakpoint: '1199px',
