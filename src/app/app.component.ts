@@ -15,14 +15,18 @@ export class AppComponent implements OnInit{
   faCart = faCartShopping;
   cart = [];
 
+  showCart: boolean = false;
+  selectedItemDetails: any = null;
+
   constructor(private primengConfig: PrimeNGConfig, private readonly cartService: CartService) {
-    cartService.cart$.subscribe( c => {
-      console.log('cart: ', c);
-      this.cart = c;
-    })
   }
 
   ngOnInit(): void {
+
+    this.cartService.cart$.subscribe( c => {
+      this.cart = c;
+    })
+
     this.primengConfig.zIndex = {
       modal: 1100,    // dialog, sidebar
       overlay: 1000,  // dropdown, overlaypanel
@@ -30,6 +34,18 @@ export class AppComponent implements OnInit{
       tooltip: 1100   // tooltip
     };
     this.cart = this.cartService.getCart();
+  }
+
+  onShowCart() {
+    this.showCart = !this.showCart;
+  }
+
+  addRemoveFromCartOrShowDetails($event: any) {
+    if ($event.button === 'addRemove') {
+      this.cartService.updateCart($event['item']);
+    } else if ($event.button === 'details') {
+      this.selectedItemDetails = $event['item'];
+    }
   }
 
 }

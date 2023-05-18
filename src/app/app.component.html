@@ -1,8 +1,37 @@
 <router-outlet></router-outlet>
 <div class="floating-button" *ngIf="cart && cart.length > 0">
-  <p-button label="Buy" styleClass="p-button-raised p-button-lg p-button-help" [badge]="cart ? cart.length.toString() : ''">
+  <p-button (onClick)="onShowCart()" label="Buy" styleClass="p-button-raised p-button-lg p-button-help" [badge]="cart ? cart.length.toString() : ''">
     <div class="icons">
       <fa-icon [icon]="faCart"></fa-icon>
     </div>
   </p-button>
 </div>
+<p-dialog header="Cart" [(visible)]="showCart" [modal]="true" [draggable]="false" [resizable]="false">
+  <!-- a p-table displaying informations about the items in the cart -->
+  <p-table [value]="cart" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]" [responsive]="true" [autoLayout]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+      <tr>
+        <td>{{item.title}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.category}}</td>
+        <td>
+          <!-- two buttons one trash to remove it and one eye to show details -->
+          <p-button (onClick)="addRemoveFromCartOrShowDetails({item: item, button: 'addRemove'})" icon="pi pi-trash" styleClass="p-button-rounded p-button-text p-button-danger p-button-sm"></p-button>
+          <p-button (onClick)="addRemoveFromCartOrShowDetails({item: item, button: 'details'})" icon="pi pi-eye" styleClass="p-button-rounded p-button-text p-button-info p-button-sm"></p-button>
+
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p class="m-0">
+    <app-item-info (selectItem)="addRemoveFromCartOrShowDetails({item: $event, button: 'addRemove'})" [item]="selectedItemDetails"></app-item-info>
+  </p>
+</p-dialog>

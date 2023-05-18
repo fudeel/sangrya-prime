@@ -9,6 +9,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./shared/interceptors/auth.interceptor";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {DialogModule} from "primeng/dialog";
+import {SharedModule} from "./shared/shared.module";
+import {TableModule} from "primeng/table";
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         redirect_uri: window.location.origin
       }
     }),
-    FontAwesomeModule
+    FontAwesomeModule,
+    DialogModule,
+    SharedModule,
+    TableModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

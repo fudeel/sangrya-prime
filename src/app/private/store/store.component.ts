@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StoreService} from "../../shared/services/store.service";
 import {CartService} from "../../shared/services/cart.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-store',
@@ -22,7 +23,6 @@ export class StoreComponent implements OnInit {
   }
 
   addRemoveFromCartOrShowDetails($event: any) {
-   console.log('addRemoveFromCartOrShowDetails: ', $event);
    if ($event.button === 'addRemove') {
      this.cartService.updateCart($event['item']);
    } else if ($event.button === 'details') {

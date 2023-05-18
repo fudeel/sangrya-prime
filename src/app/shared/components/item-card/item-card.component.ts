@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import { faCartShopping, faTrash, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import {CartService} from "../../services/cart.service";
 
@@ -7,7 +7,7 @@ import {CartService} from "../../services/cart.service";
   templateUrl: './item-card.component.html',
   styleUrls: ['./item-card.component.scss']
 })
-export class ItemCardComponent implements OnInit {
+export class ItemCardComponent implements OnInit, OnChanges {
   @Input() item: any;
 
   @Output() selectItem: EventEmitter<any> = new EventEmitter<string>();
@@ -22,10 +22,15 @@ export class ItemCardComponent implements OnInit {
 
   constructor(private readonly cartService: CartService) {
     this.responsiveOptions = [];
+    cartService.cart$.subscribe( c => {
+      this.isInCart = this.cartService.isItemInCart(this.item?._id);
+    })
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
   }
 
   ngOnInit(): void {
-    console.log('item: ', this.item);
     this.isInCart = this.cartService.isItemInCart(this.item._id);
   }
 
@@ -33,4 +38,5 @@ export class ItemCardComponent implements OnInit {
     this.selectItem.emit({item, button: button});
     this.isInCart = this.cartService.isItemInCart(item._id);
   }
+
 }
