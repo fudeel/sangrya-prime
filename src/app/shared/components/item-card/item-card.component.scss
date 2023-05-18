@@ -3,6 +3,24 @@
     align-items: center;
     height: auto;
     width: fit-content;
+
+    .body {
+      .description {
+        display: flex;
+        justify-content: center;
+        max-width: 300px;
+        p {
+          margin: 0.5rem;
+        }
+      }
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 12px;
+    }
+
     &:hover {
       background: #f8f8f8;
     }
@@ -12,4 +30,5 @@
 
 :host ::ng-deep .p-carousel-items-content {
   width: 200px;
+  height: 0;
 }
