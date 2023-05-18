@@ -1,5 +1,5 @@
 <!-- split the component in two pieces horizontally, the left side is the p-carousel with the pics, the right side is the description -->
-<div class="row" *ngIf="item">
+<div class="item-info row" *ngIf="item">
     <div class="col-md-6">
         <p-carousel [value]="item.pics" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" styleClass="custom-carousel">
             <ng-template let-image pTemplate="item">
@@ -25,7 +25,10 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <button pButton type="button" label="Add to cart" icon="pi pi-shopping-cart"></button>
+                <button pButton type="button" [label]="isInCart ? 'Remove from cart' : 'Add to cart'" (click)="addRemoveFromCartOrShowDetails(item, 'addRemove')">
+                  <fa-icon *ngIf="!isInCart" [icon]="faCart"></fa-icon>
+                  <fa-icon *ngIf="isInCart" [icon]="faTrash"></fa-icon>
+                </button>
             </div>
         </div>
     </div>

@@ -2,8 +2,8 @@
 <div class="flex flex-wrap justify-content-center">
   <app-item-card [item]="s" *ngFor="let s of sellingItems" class="px-2" (selectItem)="addRemoveFromCartOrShowDetails($event)"></app-item-card>
 </div>
-<p-dialog header="Header" [(visible)]="selectedItemDetails" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+<p-dialog header="Header" [(visible)]="selectedItemDetails" [modal]="true" [draggable]="false" [resizable]="false">
   <p class="m-0">
-    <app-item-info [item]="selectedItemDetails"></app-item-info>
+    <app-item-info (selectItem)="addRemoveFromCartOrShowDetails($event)" [item]="selectedItemDetails"></app-item-info>
   </p>
 </p-dialog>

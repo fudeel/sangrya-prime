@@ -1,0 +1,7 @@
+.item-info {
+  max-width: 20rem;
+}
+
+:host ::ng-deep .p-dialog {
+  background-color: red !important;
+}

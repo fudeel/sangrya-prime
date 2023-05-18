@@ -29,10 +29,6 @@ export class ItemCardComponent implements OnInit {
     this.isInCart = this.cartService.isItemInCart(this.item._id);
   }
 
-  showDetails(_id: string, button: 'details') {
-    this.selectItem.emit({_id, button: button});
-  }
-
   addRemoveFromCartOrShowDetails(item: any, button: 'addRemove' | 'details') {
     this.selectItem.emit({item, button: button});
     this.isInCart = this.cartService.isItemInCart(item._id);
