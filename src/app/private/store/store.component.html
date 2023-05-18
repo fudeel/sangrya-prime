@@ -2,7 +2,6 @@
 <div class="flex flex-wrap justify-content-center">
   <app-item-card [item]="s" *ngFor="let s of sellingItems" class="px-2" (selectItem)="addRemoveFromCartOrShowDetails($event)"></app-item-card>
 </div>
-<p-button icon="pi pi-external-link" label="Show"></p-button>
 <p-dialog header="Header" [(visible)]="selectedItemDetails" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
   <p class="m-0">
     <app-item-info [item]="selectedItemDetails"></app-item-info>

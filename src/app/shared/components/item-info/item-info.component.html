@@ -1,24 +1,32 @@
-<!-- split the component in two pieces, the left side is the p-carousel with the pics, the right side is the description -->
-<div class="p-grid" *ngIf="item">
-    <div class="p-col-12 p-md-6">
+<!-- split the component in two pieces horizontally, the left side is the p-carousel with the pics, the right side is the description -->
+<div class="row" *ngIf="item">
+    <div class="col-md-6">
         <p-carousel [value]="item.pics" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" styleClass="custom-carousel">
             <ng-template let-image pTemplate="item">
                 <img src="{{image}}" style="display:block;width:100%">
             </ng-template>
         </p-carousel>
     </div>
-    <div class="p-col-12 p-md-6">
-        <div class="product-details">
-            <h1>{{item.title}}</h1>
-            <div class="product-rating">
-                <i class="pi pi-star" *ngFor="let rating of [1,2,3,4,5]"></i>
-                <span>(4)</span>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{item.title}}</h1>
             </div>
-            <h3 class="product-price">\${{item.price}}</h3>
-            <div class="product-description">{{item.description}}</div>
-            <div class="product-action">
-                <p-button icon="pi pi-shopping-cart" label="Add to Cart" styleClass="p-button-success"></p-button>
-                <p-button icon="pi pi-heart" label="Add to Wishlist" styleClass="p-button-secondary"></p-button>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>{{item.price}} €</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>{{item.longDescription}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button pButton type="button" label="Add to cart" icon="pi pi-shopping-cart"></button>
             </div>
         </div>
     </div>
+</div>
