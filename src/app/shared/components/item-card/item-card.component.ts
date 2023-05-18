@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { faCartShopping, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-item-card',
@@ -9,6 +10,11 @@ export class ItemCardComponent implements OnInit {
   @Input() item: any;
 
   responsiveOptions: any[];
+
+  isInCart: boolean = false;
+
+  cart = faCartShopping;
+  trash = faTrash;
 
   constructor() {
     this.responsiveOptions = [
