@@ -27,6 +27,11 @@ export class CartService {
 
   getCart() {
     return JSON.parse(localStorage.getItem('cart') || '[]');
+  }
 
+  isItemInCart(_id: string) {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const index = cart.findIndex((item: any) => item._id === _id);
+    return index > -1;
   }
 }

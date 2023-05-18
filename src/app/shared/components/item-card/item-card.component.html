@@ -8,8 +8,15 @@
       </p-carousel>
     </div>
     <div class="body">
-      <div class="category">
-        <p-chip label="{{item.category}}"></p-chip>
+      <div class="top">
+        <div class="category">
+          <p-chip label="{{item.category}}"></p-chip>
+        </div>
+        <div class="details">
+          <p-button label="Info" styleClass="p-button-rounded p-button-info p-button-sm">
+            <fa-icon [icon]="faCircle"></fa-icon>
+          </p-button>
+        </div>
       </div>
       <div class="description">
         <div>
@@ -22,8 +29,8 @@
         </div>
         <div class="buttons align-items-center">
           <p-button class="" [label]="isInCart ? 'Remove' : 'Add'" styleClass="p-button-text" (onClick)="addRemoveFromCart(item._id)">
-            <fa-icon *ngIf="!isInCart" [icon]="cart"></fa-icon>
-            <fa-icon *ngIf="isInCart" [icon]="trash"></fa-icon>
+            <fa-icon *ngIf="!isInCart" [icon]="faCart"></fa-icon>
+            <fa-icon *ngIf="isInCart" [icon]="faTrash"></fa-icon>
           </p-button>
         </div>
       </div>

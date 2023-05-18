@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { faCartShopping, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faTrash, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import {CartService} from "../../services/cart.service";
 
 @Component({
@@ -16,34 +16,21 @@ export class ItemCardComponent implements OnInit {
 
   isInCart: boolean = false;
 
-  cart = faCartShopping;
-  trash = faTrash;
+  faCart = faCartShopping;
+  faTrash = faTrash;
+  faCircle = faCircleInfo;
 
-  constructor() {
-    this.responsiveOptions = [
-      {
-        breakpoint: '1199px',
-        numVisible: 1,
-        numScroll: 1
-      },
-      {
-        breakpoint: '991px',
-        numVisible: 2,
-        numScroll: 1
-      },
-      {
-        breakpoint: '767px',
-        numVisible: 1,
-        numScroll: 1
-      }
-    ];
+  constructor(private readonly cartService: CartService) {
+    this.responsiveOptions = [];
   }
 
   ngOnInit(): void {
     console.log('item: ', this.item);
+    this.isInCart = this.cartService.isItemInCart(this.item._id);
   }
 
   addRemoveFromCart(_id: string) {
     this.selectItem.emit(_id);
+    this.isInCart = this.cartService.isItemInCart(this.item._id);
   }
 }
