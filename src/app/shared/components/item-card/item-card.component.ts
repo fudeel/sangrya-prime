@@ -10,7 +10,7 @@ import {CartService} from "../../services/cart.service";
 export class ItemCardComponent implements OnInit {
   @Input() item: any;
 
-  @Output() selectItem: EventEmitter<string> = new EventEmitter<string>();
+  @Output() selectItem: EventEmitter<any> = new EventEmitter<string>();
 
   responsiveOptions: any[];
 
@@ -29,8 +29,12 @@ export class ItemCardComponent implements OnInit {
     this.isInCart = this.cartService.isItemInCart(this.item._id);
   }
 
-  addRemoveFromCart(_id: string) {
-    this.selectItem.emit(_id);
-    this.isInCart = this.cartService.isItemInCart(this.item._id);
+  showDetails(_id: string, button: 'details') {
+    this.selectItem.emit({_id, button: button});
+  }
+
+  addRemoveFromCartOrShowDetails(item: any, button: 'addRemove' | 'details') {
+    this.selectItem.emit({item, button: button});
+    this.isInCart = this.cartService.isItemInCart(item._id);
   }
 }

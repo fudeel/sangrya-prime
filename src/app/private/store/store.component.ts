@@ -10,6 +10,7 @@ import {CartService} from "../../shared/services/cart.service";
 export class StoreComponent implements OnInit {
 
   sellingItems = [];
+  selectedItemDetails: any = null;
 
   constructor(private readonly storeService: StoreService, private readonly cartService: CartService) {
     storeService.getStoreInformation().subscribe(res => {
@@ -18,10 +19,14 @@ export class StoreComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
-  addRemoveFromCart($event: string) {
-    this.cartService.updateCart($event);
+  addRemoveFromCartOrShowDetails($event: any) {
+   console.log('addRemoveFromCartOrShowDetails: ', $event);
+   if ($event.button === 'addRemove') {
+     this.cartService.updateCart($event['item']);
+   } else if ($event.button === 'details') {
+     this.selectedItemDetails = $event['item'];
+   }
   }
 }

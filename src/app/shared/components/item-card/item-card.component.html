@@ -13,7 +13,7 @@
           <p-chip label="{{item.category}}"></p-chip>
         </div>
         <div class="details">
-          <p-button label="Info" styleClass="p-button-rounded p-button-info p-button-sm">
+          <p-button label="Info" styleClass="p-button-rounded p-button-info p-button-sm" (onClick)="addRemoveFromCartOrShowDetails(item, 'details')">
             <fa-icon [icon]="faCircle"></fa-icon>
           </p-button>
         </div>
@@ -28,7 +28,7 @@
           <h3>{{item.price | currency:'USD':'symbol':'1.2-2'}}</h3>
         </div>
         <div class="buttons align-items-center">
-          <p-button class="" [label]="isInCart ? 'Remove' : 'Add'" styleClass="p-button-text" (onClick)="addRemoveFromCart(item._id)">
+          <p-button class="" [label]="isInCart ? 'Remove' : 'Add'" styleClass="p-button-text" (onClick)="addRemoveFromCartOrShowDetails(item, 'addRemove')">
             <fa-icon *ngIf="!isInCart" [icon]="faCart"></fa-icon>
             <fa-icon *ngIf="isInCart" [icon]="faTrash"></fa-icon>
           </p-button>

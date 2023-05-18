@@ -21,6 +21,7 @@ import { TimepickerComponent } from './components/timepicker/timepicker.componen
 import {DropdownModule} from "primeng/dropdown";
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import {CarouselModule} from "primeng/carousel";
+import { ItemInfoComponent } from './components/item-info/item-info.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {CarouselModule} from "primeng/carousel";
     PaymentComponent,
     ConfirmComponent,
     TimepickerComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    ItemInfoComponent
   ],
     imports: [
         CommonModule,
@@ -51,16 +53,17 @@ import {CarouselModule} from "primeng/carousel";
         DropdownModule,
         CarouselModule
     ],
-    exports: [
-        ProviderCardComponent,
-        StepperComponent,
-        CardModule,
-        ButtonModule,
-        ChipModule,
-        StepsModule,
-        RadioButtonModule,
-        FormsModule,
-        ItemCardComponent
-    ]
+  exports: [
+    ProviderCardComponent,
+    StepperComponent,
+    CardModule,
+    ButtonModule,
+    ChipModule,
+    StepsModule,
+    RadioButtonModule,
+    FormsModule,
+    ItemCardComponent,
+    ItemInfoComponent
+  ]
 })
 export class SharedModule { }

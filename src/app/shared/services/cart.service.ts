@@ -12,14 +12,14 @@ export class CartService {
 
   constructor() { }
 
-  updateCart(_id: string) {
+  updateCart(selectedItem: any) {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const index = cart.findIndex((item: any) => item._id === _id);
+    const index = cart.findIndex((item: any) => item._id === selectedItem._id);
     if (index > -1) {
       cart.splice(index, 1);
     }
     else {
-      cart.push({_id});
+      cart.push(selectedItem);
     }
     localStorage.setItem('cart', JSON.stringify(cart));
     this.cartSubject.next(cart);
