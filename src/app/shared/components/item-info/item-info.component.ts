@@ -11,6 +11,7 @@ import {Subscription} from "rxjs";
 export class ItemInfoComponent implements OnInit, OnDestroy, OnChanges{
 
   @Input() item: any;
+  @Input() isBuy: boolean = false;
   @Input() resetItem: boolean = false;
   @Output() selectItem: EventEmitter<any> = new EventEmitter<string>();
 
@@ -40,8 +41,14 @@ export class ItemInfoComponent implements OnInit, OnDestroy, OnChanges{
   }
 
   addRemoveFromCartOrShowDetails(item: any, button: 'addRemove' | 'details') {
-    this.selectItem.emit({item, button: button});
-    this.isInCart = this.cartService.isItemInCart(item._id);
+    if (!this.isBuy) {
+      this.selectItem.emit({item, button: button});
+      this.isInCart = this.cartService.isItemInCart(item._id);
+    } else {
+      if (button === 'addRemove') {
+        this.cartService.updateCart(item);
+      }
+    }
   }
 
   ngOnDestroy(): void {

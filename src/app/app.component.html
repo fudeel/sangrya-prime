@@ -32,6 +32,6 @@
     </ng-template>
   </p-table>
   <p class="m-0">
-    <app-item-info (selectItem)="addRemoveFromCartOrShowDetails({item: $event, button: 'addRemove'})" [item]="selectedItemDetails"></app-item-info>
+    <app-item-info [isBuy]="true" (selectItem)="addRemoveFromCartOrShowDetails({item: $event, button: 'addRemove'})" [item]="selectedItemDetails"></app-item-info>
   </p>
 </p-dialog>
