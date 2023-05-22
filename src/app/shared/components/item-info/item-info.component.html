@@ -3,7 +3,7 @@
     <div class="col-md-6">
         <p-carousel [value]="item.pics" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" styleClass="custom-carousel">
             <ng-template let-image pTemplate="item">
-                <img src="{{image}}" style="display:block;width:100%">
+                <img class="w-9 sm:w-16rem xl:w-10rem shadow-8 block xl:block mx-auto border-round" src="{{image}}" style="display:block;width:100%">
             </ng-template>
         </p-carousel>
     </div>

@@ -19,14 +19,23 @@ export class AppComponent implements OnInit{
   showCart: boolean = false;
   selectedItemDetails: any = null;
 
+  total = 0;
+
   constructor(private primengConfig: PrimeNGConfig, private readonly cartService: CartService, private readonly stripeService: StripeService) {
   }
 
   ngOnInit(): void {
 
     this.cartService.cart$.subscribe( c => {
-      this.cart = c;
-    })
+
+      this.cart = this.cartService.getCart();
+
+      /* calculate total from this.cart */
+      this.total = 0;
+      this.cart.forEach((item: any) => {
+        this.total += item.price;
+      });
+    });
 
     this.primengConfig.zIndex = {
       modal: 1100,    // dialog, sidebar
@@ -34,7 +43,6 @@ export class AppComponent implements OnInit{
       menu: 1000,     // overlay menus
       tooltip: 1100   // tooltip
     };
-    this.cart = this.cartService.getCart();
   }
 
   onShowCart() {

@@ -12,6 +12,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DialogModule} from "primeng/dialog";
 import {SharedModule} from "./shared/shared.module";
 import {TableModule} from "primeng/table";
+import {DataViewModule} from "primeng/dataview";
+import {RatingModule} from "primeng/rating";
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {TableModule} from "primeng/table";
     FontAwesomeModule,
     DialogModule,
     SharedModule,
-    TableModule
+    TableModule,
+    DataViewModule,
+    RatingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
