@@ -38,7 +38,11 @@
           <!-- print the total price of the cart -->
         <div class="flex justify-content-between align-items-center gap-3 p-4">
           <div class="text-2xl font-semibold">Total</div>
-          <div class="text-2xl font-semibold">{{'$'+ total }}</div>
+          <p-button (onClick)="onShowCart()" [label]="'Pay  $'+ total" styleClass="p-button-raised p-button-lg p-button-help">
+            <div class="icons">
+              <fa-icon [icon]="faCreditCard"></fa-icon>
+            </div>
+          </p-button>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PrimeNGConfig} from "primeng/api";
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import {CartService} from "./shared/services/cart.service";
 import {StripeService} from "./shared/services/stripe.service";
 
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
 
   title = 'sangrya-prime';
   faCart = faCartShopping;
+  faCreditCard = faCreditCard;
   cart = [];
 
   showCart: boolean = false;
