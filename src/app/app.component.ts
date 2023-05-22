@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PrimeNGConfig} from "primeng/api";
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import {CartService} from "./shared/services/cart.service";
+import {StripeService} from "./shared/services/stripe.service";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit{
   showCart: boolean = false;
   selectedItemDetails: any = null;
 
-  constructor(private primengConfig: PrimeNGConfig, private readonly cartService: CartService) {
+  constructor(private primengConfig: PrimeNGConfig, private readonly cartService: CartService, private readonly stripeService: StripeService) {
   }
 
   ngOnInit(): void {
@@ -48,4 +49,9 @@ export class AppComponent implements OnInit{
     }
   }
 
+  onCheckout() {
+    this.stripeService.createCheckoutSession('price_1NAHwPIiOYkh7G8aU9DnNpPB').subscribe((res: any) => {
+      window.location.href = res.sessionUrl;
+    });
+  }
 }

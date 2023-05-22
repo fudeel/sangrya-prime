@@ -34,4 +34,6 @@
   <p class="m-0">
     <app-item-info [isBuy]="true" (selectItem)="addRemoveFromCartOrShowDetails({item: $event, button: 'addRemove'})" [item]="selectedItemDetails"></app-item-info>
   </p>
+
+  <button (click)="onCheckout()">PAY</button>
 </p-dialog>
