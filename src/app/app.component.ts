@@ -56,7 +56,8 @@ export class AppComponent implements OnInit{
   }
 
   onCheckout() {
-    this.stripeService.createCheckoutSession('price_1NAHwPIiOYkh7G8aU9DnNpPB').subscribe((res: any) => {
+    const priceIds = this.cart.map((item: any) => item.priceId);
+    this.stripeService.createCheckoutSession(priceIds).subscribe((res: any) => {
       window.location.href = res.sessionUrl;
     });
   }
