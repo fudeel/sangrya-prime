@@ -10,23 +10,23 @@
   <!-- a p-table displaying informations about the items in the cart -->
   <div class="card">
     <p-dataView #dv [value]="cart">
-      <ng-template let-cart pTemplate="listItem">
+      <ng-template let-c pTemplate="listItem">
         <div class="col-12">
           <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
-            <img class="w-9 sm:w-16rem xl:w-10rem shadow-8 block xl:block mx-auto border-round" [src]="cart.pics[0]" [alt]="cart.name" />
+            <img class="w-9 sm:w-16rem xl:w-10rem shadow-8 block xl:block mx-auto border-round" [src]="c.pics[0]" [alt]="c.name" />
             <div class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
               <div class="flex flex-column align-items-center sm:align-items-start gap-3">
-                <div class="text-2xl font-bold text-900">{{ cart.title }}</div>
+                <div class="text-2xl font-bold text-900">{{ c.title }}</div>
                 <div class="flex align-items-center gap-3">
                                 <span class="flex align-items-center gap-2">
                                     <i class="pi pi-tag"></i>
-                                    <span class="font-semibold">{{ cart.category }}</span>
+                                    <span class="font-semibold">{{ c.category }}</span>
                                 </span>
                 </div>
               </div>
               <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-                <span class="text-2xl font-semibold">{{'$'+ cart.price }}</span>
-                <button pButton icon="pi pi-shopping-cart" class="md:align-self-end mb-2 p-button-rounded"></button>
+                <span class="text-2xl font-semibold">{{'$'+ c.price }}</span>
+                <button pButton icon="pi pi-trash" class="md:align-self-end mb-2 p-button-rounded" (click)="addRemoveFromCartOrShowDetails(c)"></button>
               </div>
             </div>
           </div>
@@ -37,9 +37,9 @@
       <div class="w:100">
           <!-- print the total price of the cart -->
         <div class="flex justify-content-between align-items-center gap-3 p-4">
-          <div class="text-2xl font-semibold">Total</div>
-          <p-button (onClick)="onShowCart()" [label]="'Pay  $'+ total" styleClass="p-button-raised p-button-lg p-button-help">
-            <div class="icons">
+          <div class="text-2xl font-semibold" *ngIf="cart.length > 0">Total</div>
+          <p-button (onClick)="cart.length > 0 ? onCheckout() : onShowCart()" [label]="cart.length > 0 ? 'Pay  $'+ total : 'Cart is empty'" styleClass="p-button-raised p-button-lg p-button-help">
+            <div class="icons" *ngIf="cart.length > 0">
               <fa-icon [icon]="faCreditCard"></fa-icon>
             </div>
           </p-button>

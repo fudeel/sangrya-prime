@@ -51,11 +51,8 @@ export class AppComponent implements OnInit{
   }
 
   addRemoveFromCartOrShowDetails($event: any) {
-    if ($event.button === 'addRemove') {
-      this.cartService.updateCart($event['item']);
-    } else if ($event.button === 'details') {
-      this.selectedItemDetails = $event['item'];
-    }
+    console.log($event);
+    this.cartService.updateCart($event);
   }
 
   onCheckout() {

@@ -1,0 +1,15 @@
+<div class="checkout success">
+  <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+  <div class="fc-divider"></div>
+  <p-card header="{{messages[0].summary}}">
+    <p class="m-0">
+      {{this.messages[0].detail}}
+    </p>
+    <div class="p-card-footer">
+      <p-button label="Continue Shopping" routerLink="/"></p-button>
+      <p-button label="View Order" routerLink="/order" *ngIf="isSuccess"></p-button>
+      <p-button (onClick)="onEmptyCart()" [disabled]="isLocalStorageCartEmpty" label="Empty cart" *ngIf="!isSuccess"></p-button>
+    </div>
+
+  </p-card>
+</div>

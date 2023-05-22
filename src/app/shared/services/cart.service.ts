@@ -34,4 +34,9 @@ export class CartService {
     const index = cart.findIndex((item: any) => item._id === _id);
     return index > -1;
   }
+
+  emptyCart() {
+    localStorage.removeItem('cart');
+    this.cartSubject.next([]);
+  }
 }

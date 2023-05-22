@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {PrivateComponent} from "./private.component";
+import {CheckoutOutputComponent} from "../shared/components/checkout-output/checkout-output.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: PrivateComponent,
-  },
-  {
-    path: 'store',
-    loadChildren: () => import('./store/store.module').then(m => m.StoreModule)
+    component: CheckoutOutputComponent
   }
 ];
 
@@ -17,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PrivateRoutingModule { }
+export class SuccessRoutingModule { }

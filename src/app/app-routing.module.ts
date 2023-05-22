@@ -9,6 +9,15 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'success',
+    loadChildren: () => import('./success/success.module').then(m => m.SuccessModule),
+  },
+  {
+    path: 'cancel',
+    loadChildren: () => import('./cancel/cancel.module').then(m => m.CancelModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: '',
     redirectTo: 'private',
     pathMatch: 'full',
