@@ -39,122 +39,11 @@
               <div class="main-menu">
                 <nav id="mobile-menu" class="d-none d-xl-block">
                   <ul>
-                    <li class="has-dropdown">
+                    <li>
                       <a [routerLink]="['/']">Home</a>
-                      <ul class="submenu">
-                        <li><a [routerLink]="['/']">Home Style 1</a></li>
-                        <li>
-                          <a [routerLink]="['/home-two']">Home Style 2</a>
-                        </li>
-                        <li><a [routerLink]="['/home-three']">Home Style 3</a></li>
-                      </ul>
-                    </li>
-                    <li class="has-dropdown">
-                      <a [routerLink]="['/shop']">Marketplace</a>
-
-                      <ul class="submenu">
-                        <li><a [routerLink]="['/shop']">Marketplace</a></li>
-                        <li><a [routerLink]="['/shop-grid']">Marketplace Grid</a></li>
-                        <li class="has-dropdown">
-                          <a [routerLink]="['/product-details']">Product Details</a>
-
-                          <ul class="submenu">
-                            <li>
-                              <a [routerLink]="['/product-details-tab']"
-                                >Product Details Tab</a
-                              >
-                            </li>
-                            <li>
-                              <a [routerLink]="['/product-details-grid']"
-                                >Product Details Grid</a
-                              >
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a [routerLink]="['/product-carusel']">Product Carousel</a>
-                        </li>
-                        <li>
-                          <a [routerLink]="['/product-filter']">Product Filter</a>
-                        </li>
-                        <li><a [routerLink]="['/product-grid']">Product Grid</a></li>
-                        <li><a [routerLink]="['/product-list']">Product List</a></li>
-                        <li><a [routerLink]="['/product-live']">Product Live</a></li>
-                        <li>
-                          <a [routerLink]="['/product-live-carusel']"
-                            >Product Live Carousel</a
-                          >
-                        </li>
-                        <li>
-                          <a [routerLink]="['/product-simple']">Product Simple</a>
-                        </li>
-                        <li><a [routerLink]="['/product-tab']">Product Tab</a></li>
-                      </ul>
-                    </li>
-                    <li class="has-dropdown megamenu-full">
-                      <a [routerLink]="['/about']">Pages</a>
-                      <ul class="megamenu">
-                        <li><a [routerLink]="['/about']">About</a></li>
-                        <li><a [routerLink]="['/login']">Login</a></li>
-                        <li><a [routerLink]="['/creator']">Creators</a></li>
-                        <li><a [routerLink]="['/shop']">Our Shop</a></li>
-
-                        <li><a [routerLink]="['/contact']">Contact Us</a></li>
-                        <li><a [routerLink]="['/register']">Register</a></li>
-                        <li><a [routerLink]="['/creator-grid']">Creators Grid</a></li>
-                        <li><a [routerLink]="['/shop-grid']">Shop Grid</a></li>
-
-                        <li><a [routerLink]="['/activity']">Activity</a></li>
-                        <li><a [routerLink]="['/forget']">Forget Password</a></li>
-                        <li><a [routerLink]="['/creator-list']">Creators List</a></li>
-                        <li>
-                          <a [routerLink]="['/product-details']">Product Details</a>
-                        </li>
-
-                        <li><a [routerLink]="['/edit-profile']">Edit Profile</a></li>
-                        <li><a [routerLink]="['/live-auction']">Live Auction</a></li>
-                        <li>
-                          <a [routerLink]="['/creator-list-two']">Creators List Square</a>
-                        </li>
-                        <li><a [routerLink]="['/support']">Support/FAQ</a></li>
-
-                        <li><a [routerLink]="['/blog']">Blog</a></li>
-                        <li><a [routerLink]="['/collection']">Collection</a></li>
-                        <li><a [routerLink]="['/create']">Create NFT</a></li>
-                        <li><a [routerLink]="['/terms']">Terms & Conditions</a></li>
-
-                        <li><a [routerLink]="['/blog-details']">Blog Details</a></li>
-                        <li>
-                          <a [routerLink]="['/collection-grid']">Collection Grid</a>
-                        </li>
-                        <li>
-                          <a [routerLink]="['/create-single']">Create Sinle NFT</a>
-                        </li>
-                        <li><a [routerLink]="['/privacy']">Privacy & Policy</a></li>
-
-                        <li><a [routerLink]="['/ranking']">NFT Ranking</a></li>
-                        <li>
-                          <a [routerLink]="['/collection-grid-two']">Collection Grid Square</a>
-                        </li>
-                        <li>
-                          <a [routerLink]="['/create-multiple']">Create Multiple NFT</a>
-                        </li>
-                        <li><a [routerLink]="['/maintaince']">Maintanance</a></li>
-
-                        <li><a [routerLink]="['/upcoming']">Upcoming Projects</a></li>
-                        <li><a [routerLink]="['/wallet']">Connect Wallet</a></li>
-                        <li><a [routerLink]="['/coming-soon']">Coming Soon</a></li>
-                        <li><a [routerLink]="['/404']">404 Error</a></li>
-                      </ul>
                     </li>
                     <li>
-                      <a [routerLink]="['/collection']">Collections</a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['/profile']">Profile</a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['/creator']">Creators</a>
+                      <a [routerLink]="['/creator']">Orders</a>
                     </li>
                   </ul>
                 </nav>
@@ -221,7 +110,7 @@
                           stroke-linejoin="round"
                         />
                       </svg>
-                      Wallet
+                      Become a seller
                     </a>
                   </div>
                   <div class="header__user ml-10">
@@ -414,105 +303,10 @@
 
             <ul metis-menu>
               <li class="menu-item-has-children has-droupdown">
-                  <a class="has-arrow">Home</a >
-                  <ul class="sub-menu">
-                    <li><a [routerLink]="['/']">Home Style 1</a></li>
-                    <li><a [routerLink]="['/home-two']">Home Style 2</a></li>
-                    <li><a [routerLink]="['/home-three']">Home Style 3</a></li>
-                  </ul>
-              </li>
-
-              <li class="menu-item-has-children has-droupdown">
-                    <a  class="has-arrow">Marketplace</a>
-                    <ul class="sub-menu" >
-                      <li><a [routerLink]="['/shop']">Marketplace</a></li>
-                      <li><a [routerLink]="['/shop-grid']">Marketplace Grid</a></li>
-
-                        <li class="menu-item-has-children has-droupdown has-dropdown-child">
-                          <a class="has-arrow">Product Details</a>
-                          <ul class="sub-menu">
-                          <li><a [routerLink]="['/product-details']">Product Details</a></li>
-                          <li><a [routerLink]="['/product-details-tab']">Product Details Tab</a></li>
-                          <li><a [routerLink]="['/product-details-grid']">Product Details Grid</a></li>
-                        </ul>
-                        </li>
-
-                        <li>
-                        <a [routerLink]="['/product-carusel']">Product Carousel</a>
-                      </li>
-                      <li>
-                        <a [routerLink]="['/product-filter']">Product Filter</a>
-                      </li>
-                      <li><a [routerLink]="['/product-grid']">Product Grid</a></li>
-                      <li><a [routerLink]="['/product-list']">Product List</a></li>
-                      <li><a [routerLink]="['/product-live']">Product Live</a></li>
-                      <li><a [routerLink]="['/product-live-carusel']">Product Live Carousel</a></li>
-                      <li><a [routerLink]="['/product-simple']">Product Simple</a></li>
-                      <li><a [routerLink]="['/product-tab']">Product Tab</a></li>
-                    </ul>
-                </li>
-
-
-              <li class="menu-item-has-children has-droupdown">
-                  <a class="has-arrow">Pages</a>
-                <ul class="sub-menu">
-                  <li><a [routerLink]="['/about']">About</a></li>
-                  <li><a [routerLink]="['/login']">Login</a></li>
-                  <li><a [routerLink]="['/creator']">Creators</a></li>
-                  <li><a [routerLink]="['/shop']">Our Shop</a></li>
-
-                  <li><a [routerLink]="['/contact']">Contact Us</a></li>
-                  <li><a [routerLink]="['/register']">Register</a></li>
-                  <li><a [routerLink]="['/creator-grid']">Creators Grid</a></li>
-                  <li><a [routerLink]="['/shop-grid']">Shop Grid</a></li>
-
-                  <li><a [routerLink]="['/activity']">Activity</a></li>
-                  <li><a [routerLink]="['/forget']">Forget Password</a></li>
-                  <li><a [routerLink]="['/creator-list']">Creators List</a></li>
-                  <li>
-                    <a [routerLink]="['/product-details']">Product Details</a>
-                  </li>
-
-                  <li><a [routerLink]="['/edit-profile']">Edit Profile</a></li>
-                  <li><a [routerLink]="['/live-auction']">Live Auction</a></li>
-                  <li>
-                    <a [routerLink]="['/creator-list-two']">Creators List Square</a>
-                  </li>
-                  <li><a [routerLink]="['/support']">Support/FAQ</a></li>
-
-                  <li><a [routerLink]="['/blog']">Blog</a></li>
-                  <li><a [routerLink]="['/collection']">Collection</a></li>
-                  <li><a [routerLink]="['/create']">Create NFT</a></li>
-                  <li><a [routerLink]="['/terms']">Terms & Conditions</a></li>
-
-                  <li><a [routerLink]="['/blog-details']">Blog Details</a></li>
-                  <li>
-                    <a [routerLink]="['/collection-grid']">Collection Grid</a>
-                  </li>
-                  <li>
-                    <a [routerLink]="['/create-single']">Create Sinle NFT</a>
-                  </li>
-                  <li><a [routerLink]="['/privacy']">Privacy & Policy</a></li>
-
-                  <li><a [routerLink]="['/ranking']">NFT Ranking</a></li>
-                  <li><a [routerLink]="['/collection-grid-two']">Collection Grid Square</a></li>
-                  <li><a [routerLink]="['/create-multiple']">Create Multiple NFT</a> </li>
-                  <li><a [routerLink]="['/maintaince']">Maintanance</a></li>
-                  <li><a [routerLink]="['/upcoming']">Upcoming Projects</a></li>
-                  <li><a [routerLink]="['/wallet']">Connect Wallet</a></li>
-                  <li><a [routerLink]="['/coming-soon']">Coming Soon</a></li>
-                  <li><a [routerLink]="['/404']">404 Error</a></li>
-                </ul>
-              </li>
-
-              <li>
-                <a [routerLink]="['/collection']" class="border-0">Collections</a>
+                  <a>Home</a >
               </li>
               <li>
-                <a [routerLink]="['/profile']" class="border-0">Profile</a>
-              </li>
-              <li>
-                <a [routerLink]="['/creator']" class="border-0">Creators</a>
+                <a [routerLink]="['/creator']" class="border-0">Orders</a>
               </li>
 
           </ul>
@@ -526,7 +320,7 @@
                 <path d="M9 5.03314H5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M17.2998 5.75061H14.8998C14.0198 5.75061 13.2998 6.65061 13.2998 7.75061C13.2998 8.85061 14.0198 9.75061 14.8998 9.75061H17.2998" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              Wallet
+              Become a seller
           </a>
         </div>
         <div class="offcanvas__notification d-sm-none d-flex align-items-center mb-25">
