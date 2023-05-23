@@ -64,7 +64,7 @@ export class PopularSellersComponent implements OnInit {
           id: provider._id,
           img: provider.pic,
           name: provider.username,
-          revenue: provider.revenue,
+          itemsSold: provider.itemsSold,
           color: ''
         })
       });
