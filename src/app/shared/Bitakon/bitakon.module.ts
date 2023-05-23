@@ -273,6 +273,8 @@ import { ProfileAreaComponent } from './profile/profile-area/profile-area.compon
   ],
   exports: [
     NgxSliderModule,
+    HeaderComponent,
+    FeaturesAreaComponent,
   ],
 
 })

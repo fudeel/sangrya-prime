@@ -11,6 +11,10 @@
         padding: 40px 30px 20px;
         padding-right: 20px;
         position: relative;
+
+      @media screen and (min-width: 992px) {
+        min-height: 22rem;
+      }
         &::before{
             @extend %theme-afbf;
             right: -1px;
@@ -64,7 +68,7 @@
                 }
             }
         }
-        
+
 
         &-inner{
             position: relative;
@@ -78,9 +82,13 @@
                 width: calc(100% + 50px);
                 height: calc(100% + 70px);
                 background: linear-gradient(133.22deg, rgba(37, 207, 170, 0) 37.05%, rgba(37, 207, 170, 0.15) 92.71%);
-                
+
                 @include border-radius(14px);
                 z-index: -1;
+
+              @media screen and (min-width: 992px) {
+                min-height: 22rem;
+              }
             }
         }
 
