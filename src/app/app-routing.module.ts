@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AuthGuard} from "@auth0/auth0-angular";
+import {HomeMainComponent} from "./shared/Bitakon/Home/home-main/home-main.component";
 
 const routes: Routes = [
+  {
+    path: '',
+    component: HomeMainComponent
+  },
   {
     path: 'private',
     loadChildren: () => import('./private/private.module').then(m => m.PrivateModule),

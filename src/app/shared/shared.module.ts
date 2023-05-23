@@ -17,6 +17,7 @@ import {CarouselModule} from "primeng/carousel";
 import { ItemInfoComponent } from './components/item-info/item-info.component';
 import { CheckoutOutputComponent } from './components/checkout-output/checkout-output.component';
 import {MessagesModule} from "primeng/messages";
+import {BitakonModule} from "./Bitakon/bitakon.module";
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import {MessagesModule} from "primeng/messages";
     TimepickerComponent,
     ItemCardComponent,
     ItemInfoComponent,
-    CheckoutOutputComponent
+    CheckoutOutputComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +42,8 @@ import {MessagesModule} from "primeng/messages";
     CalendarModule,
     DropdownModule,
     CarouselModule,
-    MessagesModule
+    MessagesModule,
+    BitakonModule,
   ],
   exports: [
     ProviderCardComponent,
@@ -52,7 +54,8 @@ import {MessagesModule} from "primeng/messages";
     RadioButtonModule,
     FormsModule,
     ItemCardComponent,
-    ItemInfoComponent
+    ItemInfoComponent,
+    BitakonModule
   ]
 })
 export class SharedModule { }

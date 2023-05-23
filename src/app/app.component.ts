@@ -3,6 +3,8 @@ import {PrimeNGConfig} from "primeng/api";
 import { faCartShopping, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import {CartService} from "./shared/services/cart.service";
 import {StripeService} from "./shared/services/stripe.service";
+import {Theme, ThemeTogglerService} from "./shared/Bitakon/services/theme-toggler/theme-toggler.service";
+import {NavigationEnd, Router} from "@angular/router";
 
 
 @Component({
@@ -13,6 +15,19 @@ import {StripeService} from "./shared/services/stripe.service";
 export class AppComponent implements OnInit{
 
   title = 'sangrya-prime';
+
+  isDarkTheme = true;
+
+  themeSetting : boolean = false;
+
+  handleThemeSetting () {
+    this.themeSetting = true;
+  }
+
+  handleThemeSettingClose () {
+    this.themeSetting = false;
+  }
+
   faCart = faCartShopping;
   faCreditCard = faCreditCard;
   cart = [];
@@ -22,7 +37,11 @@ export class AppComponent implements OnInit{
 
   total = 0;
 
-  constructor(private primengConfig: PrimeNGConfig, private readonly cartService: CartService, private readonly stripeService: StripeService) {
+  constructor(private primengConfig: PrimeNGConfig,
+              private readonly cartService: CartService,
+              private readonly stripeService: StripeService,
+              private tt: ThemeTogglerService
+              ,private router : Router) {
   }
 
   ngOnInit(): void {
@@ -44,6 +63,14 @@ export class AppComponent implements OnInit{
       menu: 1000,     // overlay menus
       tooltip: 1100   // tooltip
     };
+
+
+    this.router.events.subscribe((evt) => {
+      if(! (evt instanceof NavigationEnd)){
+        return
+      }
+      window.scrollTo(0,0)
+    })
   }
 
   onShowCart() {
@@ -60,5 +87,10 @@ export class AppComponent implements OnInit{
     this.stripeService.createCheckoutSession(priceIds).subscribe((res: any) => {
       window.location.href = res.sessionUrl;
     });
+  }
+
+
+  switchTheme(newTheme: Theme): void {
+    this.tt.switchTheme(newTheme);
   }
 }
