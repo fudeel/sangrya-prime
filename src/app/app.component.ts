@@ -5,6 +5,7 @@ import {CartService} from "./shared/services/cart.service";
 import {StripeService} from "./shared/services/stripe.service";
 import {Theme, ThemeTogglerService} from "./shared/Bitakon/services/theme-toggler/theme-toggler.service";
 import {NavigationEnd, Router} from "@angular/router";
+import {ProvidersService} from "./shared/services/providers.service";
 
 
 @Component({
@@ -37,11 +38,14 @@ export class AppComponent implements OnInit{
 
   total = 0;
 
+  isTopSellersLoading = true;
+
   constructor(private primengConfig: PrimeNGConfig,
               private readonly cartService: CartService,
               private readonly stripeService: StripeService,
-              private tt: ThemeTogglerService
-              ,private router : Router) {
+              private tt: ThemeTogglerService,
+              private readonly providersService: ProvidersService,
+              private router : Router) {
   }
 
   ngOnInit(): void {
@@ -70,7 +74,12 @@ export class AppComponent implements OnInit{
         return
       }
       window.scrollTo(0,0)
-    })
+    });
+
+    this.providersService.getTopProviders().subscribe((res: any) => {
+      this.providersService.updateTopProviders(res);
+      this.isTopSellersLoading = false;
+    });
   }
 
   onShowCart() {
@@ -78,7 +87,6 @@ export class AppComponent implements OnInit{
   }
 
   addRemoveFromCartOrShowDetails($event: any) {
-    console.log($event);
     this.cartService.updateCart($event);
   }
 

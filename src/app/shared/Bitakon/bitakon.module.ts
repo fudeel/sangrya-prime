@@ -275,6 +275,7 @@ import { ProfileAreaComponent } from './profile/profile-area/profile-area.compon
     NgxSliderModule,
     HeaderComponent,
     FeaturesAreaComponent,
+    PopularSellersComponent,
   ],
 
 })

@@ -5,11 +5,7 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
-@import "~bootstrap/dist/css/bootstrap.css";
-@import 'swiper/swiper-bundle.css';
-@import '../src/assets/css/font-awesome-pro.css';
-@import '../src/assets/css/elegant-icon.css';
-@import '../src/assets/scss/main.scss';
+
 
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
@@ -50,3 +46,9 @@ $bitakon-dark-theme: mat.define-dark-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import "~bootstrap/dist/css/bootstrap.css";
+@import 'swiper/swiper-bundle.css';
+@import '../src/assets/css/font-awesome-pro.css';
+@import '../src/assets/css/elegant-icon.css';
+@import '../src/assets/scss/main.scss';

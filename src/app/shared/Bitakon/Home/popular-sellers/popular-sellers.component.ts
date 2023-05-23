@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProvidersService} from "../../../services/providers.service";
 
 @Component({
   selector: 'app-popular-sellers',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class PopularSellersComponent implements OnInit {
 
 
-  sellersData = [
+  /*sellersData = [
     {
       id:1,
       img:'assets/img/seller/seller-1.jpg',
@@ -51,9 +52,24 @@ export class PopularSellersComponent implements OnInit {
       revenue:'00.78',
       color:'clr-pink'
     },
-  ]
+  ]*/
 
-  constructor() { }
+  sellersData: any[] = [];
+
+  constructor(private readonly providersService: ProvidersService) {
+    this.providersService.getTopProviders().subscribe((data) => {
+      console.log('data', data);
+      data.providers.forEach((provider: any) => {
+        this.sellersData.push({
+          id: provider._id,
+          img: provider.pic,
+          name: provider.username,
+          revenue: provider.revenue,
+          color: ''
+        })
+      });
+    })
+  }
 
   ngOnInit(): void {
   }

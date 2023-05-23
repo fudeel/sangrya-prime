@@ -6,7 +6,8 @@ import {HomeMainComponent} from "./shared/Bitakon/Home/home-main/home-main.compo
 const routes: Routes = [
   {
     path: '',
-    component: HomeMainComponent
+    pathMatch: 'full',
+    redirectTo: 'home'
   },
   {
     path: 'private',
