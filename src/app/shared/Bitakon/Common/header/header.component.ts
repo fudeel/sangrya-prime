@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
     auth.user$.subscribe((data) => {
      this.user = data;
 
-     console.log(this.user);
+     console.log("logged user: ", this.user);
     });
   }
 
