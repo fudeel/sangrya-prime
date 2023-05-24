@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit{
       this.providersService.getTopProviders().subscribe((res: any) => {
         this.isTopSellersLoading = false;
         this.topSellers = res;
+        this.providersService.updateTopProviders(res);
       });
     }
 
