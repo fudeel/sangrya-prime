@@ -1,6 +1,7 @@
 import { Component,HostListener, OnInit,Input } from '@angular/core';
 import {AuthService, User} from "@auth0/auth0-angular";
 import {Observable} from "rxjs";
+import {CartService} from "../../../services/cart.service";
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,8 @@ export class HeaderComponent implements OnInit {
   headerSticky : boolean = false;
 
   showSidebar : boolean = false;
+
+  isLoadingUser: boolean = true;
 
   // sticky nav
   @HostListener('window:scroll',['$event']) onscroll () {
@@ -37,15 +40,27 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private readonly cartService: CartService) {
     auth.user$.subscribe((data) => {
      this.user = data;
 
      console.log("logged user: ", this.user);
+     this.isLoadingUser = false;
+    }, (error) => {
+      console.log("error: ", error);
+      this.isLoadingUser = false;
     });
   }
 
   ngOnInit(): void {
   }
 
+  onLoginRegister() {
+    this.auth.loginWithPopup()
+  }
+
+  onLogout() {
+    this.cartService.emptyCart();
+    this.auth.logout();
+  }
 }

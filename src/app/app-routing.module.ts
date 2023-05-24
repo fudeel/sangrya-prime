@@ -24,8 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'cancel',
-    loadChildren: () => import('./cancel/cancel.module').then(m => m.CancelModule),
-    canActivate: [AuthGuard],
+    loadChildren: () => import('./cancel/cancel.module').then(m => m.CancelModule)
   },
   {
     path: '',

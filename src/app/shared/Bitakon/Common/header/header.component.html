@@ -115,13 +115,13 @@
                   </div>
                   <div class="header__user ml-10">
                     <div *ngIf="user === null">
-                      <a
+                      <button (click)="onLoginRegister()"
                         [routerLink]="['/wallet']"
                         class="header__wallet-btn"
                         id="loginregisterbtn"
                       >
                         Login / Register
-                      </a>
+                      </button>
                     </div>
                     <a [routerLink]="['/profile']" *ngIf="user !== null && user?.sub">
                       <img src="assets/img/user/user.jpg" alt="" />
@@ -139,9 +139,9 @@
                         </div>
                       </div>
                       <div class="wallet__dropdown-id">
-                        <h5>Wallet:</h5>
+                        <h5>email</h5>
                         <p>
-                          0xF74d ... 12hf204
+                          {{user?.['email']}}
                           <button type="button">
                             <svg
                               width="15"
@@ -164,9 +164,6 @@
                           </button>
                         </p>
                       </div>
-                      <div class="wallet__dropdown-balance">
-                        <p>Balance: <span>0.075ETH</span></p>
-                      </div>
                       <div class="wallet__dropdown-action">
                         <ul>
                           <li>
@@ -180,7 +177,7 @@
                             >
                           </li>
                           <li>
-                            <a [routerLink]="['/login']"
+                            <a [routerLink]="['/login']" (click)="onLogout()"
                               ><i
                                 class="fa-regular fa-arrow-right-from-bracket"
                               ></i>
