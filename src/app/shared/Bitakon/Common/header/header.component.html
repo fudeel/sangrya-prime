@@ -118,7 +118,7 @@
                       <a
                         [routerLink]="['/wallet']"
                         class="header__wallet-btn"
-                        id="connectbtn"
+                        id="loginregisterbtn"
                       >
                         Login / Register
                       </a>
@@ -126,7 +126,7 @@
                     <a [routerLink]="['/profile']" *ngIf="user !== null && user?.sub">
                       <img src="assets/img/user/user.jpg" alt="" />
                     </a>
-                    <div class="wallet__dropdown tp-wallet-dropdown">
+                    <div class="wallet__dropdown tp-wallet-dropdown" *ngIf="user !== null && user?.sub">
                       <div class="wallet__dropdown-cover">
                         <img src="assets/img/user/user-cover.png" alt="" />
                       </div>
