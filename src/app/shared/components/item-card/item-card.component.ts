@@ -3,7 +3,7 @@ import { faCartShopping, faTrash, faCircleInfo } from '@fortawesome/free-solid-s
 import {CartService} from "../../services/cart.service";
 
 @Component({
-  selector: 'app-item-card',
+  selector: 'app-item-card-prime',
   templateUrl: './item-card.component.html',
   styleUrls: ['./item-card.component.scss']
 })

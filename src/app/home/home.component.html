@@ -1,3 +1,3 @@
 <app-popular-sellers [sellersData]="topSellers" *ngIf="topSellers && topSellers.length > 0"></app-popular-sellers>
 <app-features-area></app-features-area>
-<app-bids-area (addToCart)="onAddToCart($event)" [topItems]="topItems"></app-bids-area>
+<app-bids-area (addToCart)="addRemoveFromCartOrShowDetails($event)" [topItems]="topItems"></app-bids-area>

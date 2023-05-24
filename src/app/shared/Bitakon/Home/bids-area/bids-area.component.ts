@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { BidsService } from '../../services/BidsData/bids.service';
 import SwiperCore, {Navigation } from "swiper";
+import {CartService} from "../../../services/cart.service";
 
 
 SwiperCore.use([Navigation]);
@@ -12,19 +12,18 @@ SwiperCore.use([Navigation]);
 })
 export class BidsAreaComponent implements OnInit {
 
-  bids : any;
-
   @Input() topItems: any[] = [];
 
   @Output() addToCart: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {}
+  constructor(private readonly cartService: CartService) {}
 
   ngOnInit(): void {
+    // this.isInCart = this.cartService.isItemInCart(this.item._id);
   }
 
-  addToCartEvent(item: any, button: 'addRemove' | 'details') {
-    this.addToCart.emit({item: item, button: button});
+  addRemoveFromCartOrShowDetails($event: any) {
+    console.log('bids-area.component.ts: addRemoveFromCartOrShowDetails(): $event: ', $event);
+    this.addToCart.emit($event);
   }
-
 }

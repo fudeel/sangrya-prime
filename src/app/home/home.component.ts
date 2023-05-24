@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit{
 
   isTopItemsLoading = true;
   topItems: any[] = [];
+  selectedItemDetails: any = null;
   constructor(private readonly providersService: ProvidersService,
               private readonly itemsService: ItemsService,
               private readonly cartService: CartService,
@@ -50,10 +51,12 @@ export class HomeComponent implements OnInit{
     }
   }
 
-  onAddToCart($event: any) {
-    console.log('adding to cart: ', $event);
+  addRemoveFromCartOrShowDetails($event: any) {
+    console.log('home.component.ts: addRemoveFromCartOrShowDetails(): $event: ', $event);
     if ($event.button === 'addRemove') {
       this.cartService.updateCart($event['item']);
+    } else if ($event.button === 'details') {
+      this.selectedItemDetails = $event['item'];
     }
   }
 }

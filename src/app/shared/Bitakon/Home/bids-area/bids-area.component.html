@@ -53,70 +53,7 @@
             }"
           >
             <ng-template *ngFor="let i of topItems" swiperSlide>
-              <div class="bid__item theme-bg-dark">
-                <div class="bid__item-wrapper">
-                  <div
-                    class="bid__top d-flex align-items-center justify-content-between mb-20"
-                  >
-                    <div class="bid__user">
-                      <ul>
-                        <li>
-                          <a [routerLink]="['/profile']">
-                            <img src="assets/img/bid/bid-user-1.jpg" alt="" />
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="bid__popularity">
-                      <a [routerLink]="['/profile']">
-                        <i class="icon_heart"></i>
-                        {{ i.likes | number}}
-                      </a>
-                    </div>
-                  </div>
-                  <div class="bid__thumb m-img mb-20">
-                    <a [routerLink]="['/product-details']">
-                      <img src="{{ i.img }}" alt="" />
-                    </a>
-                  </div>
-                  <div class="bid__content">
-                    <h3 class="bid__title">
-                      <a [routerLink]="['/product-details']">{{ i.title  | titlecase}}</a>
-                    </h3>
-                    <div
-                      class="bid__info d-flex align-items-center justify-content-between"
-                    >
-                      <div class="bid__highest">
-                        <p>Price <span>{{ i.price | currency }}</span></p>
-                      </div>
-                      <div class="bid__stock">
-                        <p>{{i.shippingWithin | titlecase}}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="bid__bottom d-flex align-items-center justify-content-between"
-                  >
-                    <div class="bid__btn-wrapper"  (click)="addToCartEvent(i, 'addRemove')">
-                      <a
-                        style="cursor: pointer"
-                        class="bid__btn bid__btn-border"
-                        >Add to cart</a
-                      >
-                    </div>
-                    <div class="bid__btn-wrapper">
-                      <button
-                        type="button"
-                        class="bid__btn"
-                        data-bs-toggle="modal"
-                        data-bs-target="#bidmodal"
-                      >
-                        Buy now
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <app-item-card (selectItem)="addRemoveFromCartOrShowDetails($event)" [item]="i"></app-item-card>
             </ng-template>
           </swiper>
         </div>

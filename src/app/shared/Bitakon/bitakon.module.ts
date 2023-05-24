@@ -132,6 +132,7 @@ import { MaintananceMainComponent } from './maintanance/maintanance-main/maintan
 import { ErrorPageMainComponent } from './error-page/error-page-main/error-page-main.component';
 import { ProfileMainComponent } from './profile/profile-main/profile-main.component';
 import { ProfileAreaComponent } from './profile/profile-area/profile-area.component';
+import { ItemCardComponent } from './Home/bids-area/item-card/item-card.component';
 
 
 
@@ -144,7 +145,7 @@ import { ProfileAreaComponent } from './profile/profile-area/profile-area.compon
     RouterModule,
     NgxSliderModule,
     FormsModule,
-    ClipboardModule
+    ClipboardModule,
   ],
   declarations: [
     HomeMainComponent,
@@ -270,6 +271,7 @@ import { ProfileAreaComponent } from './profile/profile-area/profile-area.compon
     ErrorPageMainComponent,
     ProfileMainComponent,
     ProfileAreaComponent,
+    ItemCardComponent,
   ],
     exports: [
         NgxSliderModule,
