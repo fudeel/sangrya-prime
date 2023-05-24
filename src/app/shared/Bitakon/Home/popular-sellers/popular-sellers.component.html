@@ -8,25 +8,6 @@
               <h3 class="section__title section__title-blue">Sellers</h3>
            </div>
         </div>
-        <!--<div class="col-xxl-3 col-lg-3 col-sm-5">
-           <div class="seller__date ml-15">
-              <div class="seller__date-select">
-                 <h3>Timeframe</h3>
-
-                 <div class="tp-select">
-                    <mat-form-field appearance="fill">
-                      <mat-label>Select an option</mat-label>
-                      <mat-select disableRipple>
-                        <mat-option value="1">Today</mat-option>
-                        <mat-option value="2">Tommorow</mat-option>
-                        <mat-option value="3">Day before yesterday</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                 </div>
-
-              </div>
-           </div>
-        </div>-->
      </div>
      <div class="row">
         <div *ngFor="let seller of sellersData" class="col-xxl-2 col-xl-2 col-lg-4 col-md-4 col-sm-6">
@@ -54,13 +35,11 @@
               </div>
               <div class="seller__content text-center">
                  <div class="seller__thumb">
-                    <a href="#">
-                       <img src={{seller.img}} alt="">
-                    </a>
+                   <img [src]=seller.pic alt="">
                  </div>
                  <div class="seller__info">
                     <h3 class="seller__name">
-                       <a [routerLink]="['/profile']">{{seller.name}}</a>
+                       <a [routerLink]="['/profile']">{{seller.username}}</a>
                     </h3>
                     <div class="seller__revenue d-flex align-items-center justify-content-center">
                        <div class="seller__revenue-icon">

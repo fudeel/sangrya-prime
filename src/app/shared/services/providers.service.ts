@@ -27,8 +27,9 @@ export class ProvidersService {
 
   updateTopProviders(topProviders: any[]) {
     if (topProviders) {
-      this.topProvidersSubject.next(topProviders);
+      console.log('update top providers: ', topProviders);
       localStorage.setItem('top-providers', JSON.stringify(topProviders));
+      this.topProvidersSubject.next(topProviders);
     }
   }
 
@@ -38,15 +39,6 @@ export class ProvidersService {
 
 
   getTopProviders(): Observable<any> {
-    /* get top providers from localstorage if it exists, if not get it from backend */
-    let topProviders = JSON.parse(<any>localStorage.getItem('top-providers'));
-    if (topProviders && topProviders.length > 0) {
-      return new Observable<any>((observer) => {
-        observer.next(topProviders);
-      });
-    } else {
-      return this.http.get(`${environment.customBackendUrl}/get-top-providers`).pipe();
-    }
+    return this.http.get(`${environment.customBackendUrl}/get-top-providers`).pipe();
   }
-
 }
