@@ -101,4 +101,6 @@ export class AppComponent implements OnInit{
   switchTheme(newTheme: Theme): void {
     this.tt.switchTheme(newTheme);
   }
+
+  protected readonly top = top;
 }

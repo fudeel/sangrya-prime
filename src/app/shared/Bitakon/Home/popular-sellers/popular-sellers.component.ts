@@ -14,8 +14,6 @@ export class PopularSellersComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    console.log('sellersData: ', this.sellersData);
-  }
+  ngOnInit(): void {}
 
 }
