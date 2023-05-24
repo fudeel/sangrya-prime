@@ -24,7 +24,7 @@
       <div class="col-xxl-12">
         <div class="bid__slider bid__slider-active">
           <swiper
-            [loop]="true"
+            [loop]="false"
             [navigation]="{
               nextEl: '.slick-next',
               prevEl: '.slick-prev'
@@ -52,7 +52,7 @@
               }
             }"
           >
-            <ng-template *ngFor="let bid of bids" swiperSlide>
+            <ng-template *ngFor="let i of topItems" swiperSlide>
               <div class="bid__item theme-bg-dark">
                 <div class="bid__item-wrapper">
                   <div
@@ -70,27 +70,27 @@
                     <div class="bid__popularity">
                       <a [routerLink]="['/profile']">
                         <i class="icon_heart"></i>
-                        14.2k
+                        {{ i.likes | number}}
                       </a>
                     </div>
                   </div>
                   <div class="bid__thumb m-img mb-20">
                     <a [routerLink]="['/product-details']">
-                      <img src="{{ bid.img }}" alt="" />
+                      <img src="{{ i.img }}" alt="" />
                     </a>
                   </div>
                   <div class="bid__content">
                     <h3 class="bid__title">
-                      <a [routerLink]="['/product-details']">{{ bid.title }}</a>
+                      <a [routerLink]="['/product-details']">{{ i.title  | titlecase}}</a>
                     </h3>
                     <div
                       class="bid__info d-flex align-items-center justify-content-between"
                     >
                       <div class="bid__highest">
-                        <p>Price <span>0.074 ETH</span></p>
+                        <p>Price <span>{{ i.price | currency }}</span></p>
                       </div>
                       <div class="bid__stock">
-                        <p>Europe</p>
+                        <p>{{i.shippingWithin | titlecase}}</p>
                       </div>
                     </div>
                   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { BidsService } from '../../services/BidsData/bids.service';
 import SwiperCore, {Navigation } from "swiper";
 
@@ -14,9 +14,9 @@ export class BidsAreaComponent implements OnInit {
 
   bids : any;
 
-  constructor(private bidsItems:BidsService) {
-    this.bids = bidsItems.bidsData();
-  }
+  @Input() topItems: any[] = [];
+
+  constructor() {}
 
   ngOnInit(): void {
   }
