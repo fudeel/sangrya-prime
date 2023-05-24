@@ -271,12 +271,13 @@ import { ProfileAreaComponent } from './profile/profile-area/profile-area.compon
     ProfileMainComponent,
     ProfileAreaComponent,
   ],
-  exports: [
-    NgxSliderModule,
-    HeaderComponent,
-    FeaturesAreaComponent,
-    PopularSellersComponent,
-  ],
+    exports: [
+        NgxSliderModule,
+        HeaderComponent,
+        FeaturesAreaComponent,
+        PopularSellersComponent,
+        BidsAreaComponent,
+    ],
 
 })
 export class BitakonModule { }

@@ -1,4 +1,6 @@
 import { Component,HostListener, OnInit,Input } from '@angular/core';
+import {AuthService, User} from "@auth0/auth0-angular";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -8,6 +10,9 @@ import { Component,HostListener, OnInit,Input } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Input () header__transparent : string | undefined;
+
+
+  user: User | null | undefined = null;
 
   headerSticky : boolean = false;
 
@@ -32,7 +37,13 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  constructor() { }
+  constructor(public auth: AuthService) {
+    auth.user$.subscribe((data) => {
+     this.user = data;
+
+     console.log(this.user);
+    });
+  }
 
   ngOnInit(): void {
   }

@@ -125,8 +125,8 @@
                         <div class="wallet__dropdown-user mr-15">
                           <img src="assets/img/user/user.jpg" alt="" />
                         </div>
-                        <div class="wallet__dropdown-user-content">
-                          <h4>Robin Milford</h4>
+                        <div *ngIf="user?.['username']" class="wallet__dropdown-user-content">
+                          <h4>{{user?.['username']}}</h4>
                         </div>
                       </div>
                       <div class="wallet__dropdown-id">
@@ -200,7 +200,7 @@
                         <img src="assets/img/user/user-2.jpg" alt="" />
                       </div>
                       <div class="wallet__dropdown-user-content">
-                        <h4>Robin Milford</h4>
+                        <h4>{{user?.preferred_username}}</h4>
                       </div>
                     </div>
                     <div class="wallet__dropdown-id">
