@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProvidersService} from "../shared/services/providers.service";
 import {ItemsService} from "../shared/services/items.service";
 import {Router} from "@angular/router";
+import {CartService} from "../shared/services/cart.service";
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit{
   topItems: any[] = [];
   constructor(private readonly providersService: ProvidersService,
               private readonly itemsService: ItemsService,
+              private readonly cartService: CartService,
               private router : Router) {
   }
 
@@ -45,6 +47,13 @@ export class HomeComponent implements OnInit{
       this.itemsService.getTopItems().subscribe((res: any) => {
         this.itemsService.updateTopItems(res);
       });
+    }
+  }
+
+  onAddToCart($event: any) {
+    console.log('adding to cart: ', $event);
+    if ($event.button === 'addRemove') {
+      this.cartService.updateCart($event['item']);
     }
   }
 }

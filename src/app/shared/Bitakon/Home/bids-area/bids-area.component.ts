@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { BidsService } from '../../services/BidsData/bids.service';
 import SwiperCore, {Navigation } from "swiper";
 
@@ -16,9 +16,15 @@ export class BidsAreaComponent implements OnInit {
 
   @Input() topItems: any[] = [];
 
+  @Output() addToCart: EventEmitter<any> = new EventEmitter<any>();
+
   constructor() {}
 
   ngOnInit(): void {
+  }
+
+  addToCartEvent(item: any, button: 'addRemove' | 'details') {
+    this.addToCart.emit({item: item, button: button});
   }
 
 }

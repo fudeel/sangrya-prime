@@ -97,9 +97,9 @@
                   <div
                     class="bid__bottom d-flex align-items-center justify-content-between"
                   >
-                    <div class="bid__btn-wrapper">
+                    <div class="bid__btn-wrapper"  (click)="addToCartEvent(i, 'addRemove')">
                       <a
-                        [routerLink]="['/product-details']"
+                        style="cursor: pointer"
                         class="bid__btn bid__btn-border"
                         >Add to cart</a
                       >
