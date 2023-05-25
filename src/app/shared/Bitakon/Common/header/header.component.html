@@ -132,7 +132,7 @@
                       </div>
                       <div class="wallet__dropdown-top d-flex align-items-end">
                         <div class="wallet__dropdown-user mr-15">
-                          <img src="assets/img/user/user.jpg" alt="" />
+                          <img ngSrc="{{user?.picture}}" alt="" />
                         </div>
                         <div *ngIf="user?.['username']" class="wallet__dropdown-user-content">
                           <h4>{{user?.['username']}}</h4>

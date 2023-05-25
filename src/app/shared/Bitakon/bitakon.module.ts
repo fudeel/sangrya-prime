@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSliderModule} from '@angular/material/slider';
@@ -144,6 +144,7 @@ import { ItemCardComponent } from './Home/bids-area/item-card/item-card.componen
     RouterModule,
     FormsModule,
     ClipboardModule,
+    NgOptimizedImage,
   ],
   declarations: [
     HomeMainComponent,
