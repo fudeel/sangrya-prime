@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Options } from '@angular-slider/ngx-slider';
 import { NftDataService } from '../../services/nft-data/nft-data.service';
 import { CollectionDataService } from '../../services/collection/collection-data.service';
 
@@ -13,7 +12,7 @@ export class CreattorShopComponent implements OnInit {
 
   minValue: number = 0;
   maxValue: number = 100;
-  options: Options = {
+  options: any = {
     floor: 0,
     ceil: 100
   };

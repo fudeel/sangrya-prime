@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NftDataService } from '../../services/nft-data/nft-data.service';
-import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-nft-area-three',
@@ -13,7 +12,7 @@ export class NftAreaThreeComponent implements OnInit {
 
   minValue: number = 0;
   maxValue: number = 100;
-  options: Options = {
+  options: any = {
     floor: 0,
     ceil: 100
   };

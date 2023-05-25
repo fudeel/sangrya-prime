@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSliderModule} from '@angular/material/slider';
 import { SwiperModule } from 'swiper/angular';
@@ -143,7 +142,6 @@ import { ItemCardComponent } from './Home/bids-area/item-card/item-card.componen
     MatSelectModule,
     MatSliderModule,
     RouterModule,
-    NgxSliderModule,
     FormsModule,
     ClipboardModule,
   ],
@@ -274,7 +272,6 @@ import { ItemCardComponent } from './Home/bids-area/item-card/item-card.componen
     ItemCardComponent,
   ],
     exports: [
-        NgxSliderModule,
         HeaderComponent,
         FeaturesAreaComponent,
         PopularSellersComponent,

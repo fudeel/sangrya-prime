@@ -1,5 +1,4 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { Options } from "@angular-slider/ngx-slider";
 import { ProductDataService } from '../../services/product-data/product-data.service';
 
 
@@ -15,7 +14,7 @@ export class ProductsTwoComponent implements OnInit {
 
   minValue: number = 0.00;
   maxValue: number = 10.00;
-  options: Options = {
+  options: any = {
     floor: 0.00,
     ceil: 10.00,
     hidePointerLabels:false
