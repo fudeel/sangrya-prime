@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit{
     } else {
       console.log('top-providers is not in localstorage');
       this.providersService.getTopProviders().subscribe((res: any) => {
+        console.log('top providers: ', res);
         this.isTopSellersLoading = false;
         this.topSellers = res;
         this.providersService.updateTopProviders(res);
@@ -46,7 +47,10 @@ export class HomeComponent implements OnInit{
     } else {
       console.log('top-items is not in localstorage');
       this.itemsService.getTopItems().subscribe((res: any) => {
-        this.itemsService.updateTopItems(res);
+        if ( res.length > 0 ) {
+          this.topItems = res;
+          this.itemsService.updateTopItems(res);
+        }
       });
     }
   }

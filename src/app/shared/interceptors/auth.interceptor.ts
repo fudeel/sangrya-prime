@@ -13,10 +13,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
     const idToken = JSON.parse(<string>localStorage.getItem('id_token'));
-    if (idToken) {
+    if (idToken && idToken !== 'undefined') {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${idToken}`
+          Authorization: `Bearer ${idToken}`,
         }
       });
     } else {

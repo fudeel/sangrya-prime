@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
+import {FileUploadModule} from "primeng/fileupload";
+import {MessageService} from "primeng/api";
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { ProfileComponent } from './profile.component';
   ],
   imports: [
     CommonModule,
-    ProfileRoutingModule
-  ]
+    ProfileRoutingModule,
+    FileUploadModule
+  ],
+  providers: [MessageService]
 })
 export class ProfileModule { }

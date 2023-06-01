@@ -18,6 +18,8 @@ import { ItemInfoComponent } from './components/item-info/item-info.component';
 import { CheckoutOutputComponent } from './components/checkout-output/checkout-output.component';
 import {MessagesModule} from "primeng/messages";
 import {BitakonModule} from "./Bitakon/bitakon.module";
+import { FileUploadModule } from 'primeng/fileupload';
+
 
 
 @NgModule({

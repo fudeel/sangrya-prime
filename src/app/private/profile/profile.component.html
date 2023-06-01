@@ -9,8 +9,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xxl-2 col-xl-2 col-lg-4 col-md-4 col-sm-6">
-        aaaaa
+      <div class="col">
+        <div class="card flex justify-content-center">
+          <p-fileUpload name="profilePicture" url="http://localhost:3000/upload" [multiple]="false" accept="image/*" [maxFileSize]="1000000">
+            <ng-template pTemplate="toolbar">
+              <div class="py-3">Upload profile picture</div>
+            </ng-template>
+          </p-fileUpload>
+        </div>
       </div>
     </div>
   </div>

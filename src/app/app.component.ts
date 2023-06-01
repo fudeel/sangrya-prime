@@ -7,6 +7,9 @@ import {Theme, ThemeTogglerService} from "./shared/Bitakon/services/theme-toggle
 import {NavigationEnd, Router} from "@angular/router";
 import {ProvidersService} from "./shared/services/providers.service";
 import {ItemsService} from "./shared/services/items.service";
+import {AuthService} from "@auth0/auth0-angular";
+import {UserService} from "./shared/services/user.service";
+import {getUserFromLocalStorageAndUpdateAppState, localStorageHandler} from "./shared/utils/localstorage-handler";
 
 
 @Component({
@@ -47,7 +50,10 @@ export class AppComponent implements OnInit{
               private tt: ThemeTogglerService,
               private readonly providersService: ProvidersService,
               private readonly itemsService: ItemsService,
+              private readonly userService: UserService,
               private router : Router) {
+
+    userService.updateUser(getUserFromLocalStorageAndUpdateAppState(), true);
   }
 
   ngOnInit(): void {
@@ -77,8 +83,6 @@ export class AppComponent implements OnInit{
       }
       window.scrollTo(0,0)
     });
-
-
 
   }
 

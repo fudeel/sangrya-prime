@@ -2,6 +2,7 @@ import { Component,HostListener, OnInit,Input } from '@angular/core';
 import {AuthService, User} from "@auth0/auth0-angular";
 import {Observable} from "rxjs";
 import {CartService} from "../../../services/cart.service";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-header',
@@ -40,27 +41,33 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  constructor(public auth: AuthService, private readonly cartService: CartService) {
-    auth.user$.subscribe((data) => {
-     this.user = data;
-
-     console.log("logged user: ", this.user);
-     this.isLoadingUser = false;
-    }, (error) => {
-      console.log("error: ", error);
+  constructor(public auth: AuthService, private readonly cartService: CartService, private readonly userService: UserService) {
+    userService.user$.subscribe((user) => {
+      console.log('user from header component: ', user);
+      this.user = user;
       this.isLoadingUser = false;
     });
+
   }
 
   ngOnInit(): void {
   }
 
   onLoginRegister() {
-    this.auth.loginWithPopup()
+    this.auth.loginWithPopup().subscribe((user) => {
+      window.location.reload();
+      console.log('user after login popup: ', user);
+
+      this.userService.getUserInformationFromDb().subscribe((user) => {
+        console.log('user after getUserInformationFromDb: ', user);
+        this.userService.updateUser(user, false);
+      });
+    });
   }
 
   onLogout() {
     this.cartService.emptyCart();
+    localStorage.clear();
     this.auth.logout();
   }
 }

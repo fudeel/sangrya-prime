@@ -18,40 +18,13 @@ export class PrivateComponent implements OnInit{
   constructor(private readonly auth: AuthService,
               private readonly providersService: ProvidersService,
               private readonly userService: UserService, private readonly router: Router) {
-    this.auth.user$.subscribe(user => {
-      if (user) {
-        this.username = user['username'];
-        /*this.userService.createUserOnDb().subscribe(res => {
-          if (res?.user) {
-            this.userService.updateUser(res.user);
-          }
-        })*/
-        this.userService.getUserInformationFromDb().subscribe(res => {
-          if (res?.user) {
-            this.userService.updateUser(res.user);
-          }
-        });
-      } else {
-        this.username = 'Not logged in';
-      }
-    });
   }
 
   ngOnInit(): void {
-    this.getProviders();
-  }
-
-  getProviders() {
-    this.providersService.getProviders().subscribe(res => {
-      if (res?.providers) {
-        this.providers = res.providers;
-      }
-    });
   }
 
   onProviderSelection($event: any) {
     this.router.navigate(['private/store'], { queryParams: { providerId: $event._id } });
-
   }
 
 }
